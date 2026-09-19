@@ -1,0 +1,10 @@
+@use './reset';
+
+body {
+  font-family: $font-base;
+  font-size: $fs-base;
+  color: $color-text;
+  background: $color-bg;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
