@@ -1,0 +1,338 @@
+.page {
+  padding: 48px 16px 64px;
+  max-width: 900px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+
+  @include media-md {
+    font-size: 24px;
+  }
+}
+
+.subtitle {
+  color: $color-text-muted;
+  font-size: 16px;
+}
+
+.row {
+  background: #fff;
+  border: 1px solid $color-border;
+  border-radius: $radius-md; // было $radius-lg
+  padding: 16px;
+}
+
+.select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm; // было $radius
+  background: #fff;
+  font: inherit;
+  color: $color-text;
+  cursor: pointer;
+
+  &:focus {
+    outline: 2px solid rgba(37, 99, 235, 0.35);
+    border-color: $color-primary;
+  }
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 120px 90px 1fr 40px;
+  gap: 12px;
+  align-items: end;
+
+  @include media-md {
+    grid-template-columns: 1fr 1fr 40px;
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  font: inherit;
+  color: $color-text;
+
+  &:focus {
+    outline: 2px solid rgba(37, 99, 235, 0.35);
+    border-color: $color-primary;
+  }
+}
+
+.remove {
+  width: 40px;
+  height: 40px;
+  border: 1px solid $color-border;
+  background: #fff;
+  color: $color-text-muted;
+  border-radius: $radius-sm;
+  font-size: 22px;
+  line-height: 1;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background: #fee2e2;
+    color: #b91c1c;
+    border-color: #fca5a5;
+  }
+
+  @include media-md {
+    align-self: end;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+
+  @include media-md {
+    flex-direction: column;
+  }
+}
+
+.addBtn {
+  @include button-base;
+  background: $color-primary;
+  color: #fff;
+
+  &:hover {
+    background: $color-primary-dark;
+  }
+}
+
+.clearBtn {
+  @include button-base;
+  background: #fff;
+  border: 1px solid $color-border;
+  color: $color-text-muted;
+  font-weight: 500;
+
+  &:hover:not(:disabled) {
+    border-color: $color-text-muted;
+    color: $color-text;
+  }
+}
+
+.total {
+  background: $color-bg-alt;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: 20px;
+  margin-bottom: 32px;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 8px 0;
+
+  & + & {
+    border-top: 1px solid $color-border;
+  }
+}
+
+.totalValue {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.totalFinal {
+  .totalLabel {
+    color: $color-text;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .totalValue {
+    font-size: 24px;
+    color: $color-primary;
+  }
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+
+  @include media-md {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.contactBtn {
+  @include button-base;
+  padding: 14px 16px;
+  color: #fff;
+
+  &:hover {
+    filter: brightness(1.08);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.whatsapp {
+  background: #25d366;
+}
+.telegram {
+  background: #229ed9;
+}
+.email {
+  background: #6b7280;
+}
+.phone {
+  background: $color-primary;
+}
+
+// --- Кнопка печати (на экране) ---
+.printBtn {
+  padding: 12px 20px;
+  border: none;
+  background: $color-text;
+  color: #fff;
+  border-radius: $radius;
+  font-weight: 600;
+  transition: background 0.15s ease;
+
+  &:hover:not(:disabled) {
+    background: #111827;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  @include media-md {
+    width: 100%;
+  }
+}
+
+// --- Печатная версия: скрыта на экране ---
+.printOnly {
+  display: none;
+}
+
+// --- Правила для печати ---
+@media print {
+  :global(body) {
+    background: #fff;
+  }
+
+  // Скрываем всё «интерфейсное»
+  :global(header),
+  :global(footer),
+  .head,
+  .rows,
+  .actions,
+  .total,
+  .contactBlock,
+  .subtitle {
+    display: none !important;
+  }
+
+  .page {
+    padding: 0;
+    max-width: none;
+  }
+
+  .printOnly {
+    display: block;
+  }
+
+  .printHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid #1f2937;
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+  }
+
+  .printBrand {
+    font-size: 22px;
+    font-weight: 700;
+    color: #2563eb;
+  }
+
+  .printMeta {
+    text-align: right;
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.6;
+  }
+
+  .printTitle {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .printDate {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 20px;
+  }
+
+  .printTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: 20px;
+
+    th,
+    td {
+      border: 1px solid #e5e7eb;
+      padding: 8px 10px;
+      text-align: left;
+    }
+
+    th {
+      background: #f9fafb;
+      font-weight: 600;
+    }
+
+    td:nth-child(3),
+    td:nth-child(4) {
+      white-space: nowrap;
+    }
+
+    td:nth-child(5),
+    td:nth-child(6),
+    th:nth-child(5),
+    th:nth-child(6) {
+      text-align: right;
+    }
+  }
+
+  .printTotalLabel {
+    text-align: right !important;
+    font-weight: 600;
+    color: #1f2937;
+    background: #f9fafb;
+  }
+
+  .printTotalValue {
+    text-align: right !important;
+    font-weight: 700;
+    color: #2563eb;
+  }
+
+  .printFooter {
+    font-size: 12px;
+    color: #6b7280;
+    font-style: italic;
+    margin-top: 24px;
+  }
+}
