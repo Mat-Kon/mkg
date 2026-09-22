@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { CONTACTS } from "@/data/contacts";
+import { WORKS } from "@/data/works";
 import styles from "./index.module.scss";
+import { ImageWithFallback } from "@/components/ImageWithFallback";
 
 type Feature = {
   title: string;
@@ -219,6 +221,45 @@ export const HomePage = () => {
                 <div className={styles.reviewName}>— {r.name}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WORKS PREVIEW */}
+      <section className={`${styles.section} ${styles.sectionAlt}`}>
+        <div className="container">
+          <div className={styles.sectionHead}>
+            <h2 className={styles.sectionTitle}>Мои работы</h2>
+            <p className={styles.sectionSubtitle}>
+              Несколько объектов, которые я сделал в Батуми и рядом.
+            </p>
+          </div>
+
+          <div className={styles.worksGrid}>
+            {WORKS.slice(0, 3).map((work) => (
+              <Link
+                key={work.slug}
+                to={`/works/${work.slug}`}
+                className={styles.workCard}
+              >
+                <ImageWithFallback  
+                  src={work.cover}
+                  alt={work.title}
+                  className={styles.workImage}
+                />
+                <div className={styles.workOverlay} />
+                <div className={styles.workContent}>
+                  <div className={styles.workTitle}>{work.title}</div>
+                  <div className={styles.workShort}>{work.short}</div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className={styles.sectionCta}>
+            <Link to="/works" className={styles.textLink}>
+              Все работы →
+            </Link>
           </div>
         </div>
       </section>

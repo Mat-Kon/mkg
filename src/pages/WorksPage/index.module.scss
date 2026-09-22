@@ -1,0 +1,108 @@
+.page {
+  padding: 48px 0 64px;
+
+  @include media-md {
+    padding: 32px 0 48px;
+  }
+}
+
+.head {
+  margin-bottom: 40px;
+
+  @include media-md {
+    margin-bottom: 28px;
+  }
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 12px;
+
+  @include media-md {
+    font-size: 26px;
+  }
+}
+
+.subtitle {
+  color: $color-text-muted;
+  font-size: 16px;
+  max-width: 640px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+
+  @include media-md {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.card {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  background: #000;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.2);
+
+    .cardImage {
+      transform: scale(1.06);
+    }
+  }
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
+}
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.35) 40%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  pointer-events: none;
+}
+
+.cardContent {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 16px 20px;
+  color: #fff;
+  z-index: 1;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 2px;
+
+  @include media-md {
+    font-size: 16px;
+  }
+}
+
+.cardShort {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+}

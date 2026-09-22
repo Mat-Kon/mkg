@@ -1,0 +1,221 @@
+.page {
+  padding: 32px 0 64px;
+
+  @include media-md {
+    padding: 24px 0 48px;
+  }
+}
+
+.breadcrumbs {
+  margin-bottom: 16px;
+}
+
+.backLink {
+  color: $color-text-muted;
+  font-size: 14px;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.head {
+  margin-bottom: 28px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+
+  @include media-md {
+    font-size: 24px;
+  }
+}
+
+.short {
+  color: $color-text-muted;
+  font-size: 16px;
+}
+
+// ================= GALLERY =================
+.gallery {
+  margin-bottom: 40px;
+}
+
+.mainImageWrap {
+  width: 100%;
+  min-height: 320px;
+  background: $color-bg-alt;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.mainImage {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: transform .4s ease;
+}
+
+.thumbs {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.thumb {
+  flex-shrink: 0;
+  width: 96px;
+  height: 72px;
+  border: 2px solid transparent;
+  border-radius: $radius;
+  overflow: hidden;
+  background: #000;
+  padding: 0;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+
+  &:hover {
+    border-color: $color-border;
+  }
+}
+
+.thumbActive {
+  border-color: $color-primary;
+}
+
+.thumbImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+// ================= DESCRIPTION =================
+.description {
+  max-width: 760px;
+  margin: 0 auto 48px;
+}
+
+.descTitle {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+
+  @include media-md {
+    font-size: 18px;
+  }
+}
+
+.descText {
+  color: $color-text;
+  font-size: 17px;
+  line-height: 1.7;
+  white-space: pre-line;
+
+  @include media-md {
+    font-size: 16px;
+  }
+}
+
+// ================= CTA =================
+.cta {
+  padding: 40px 24px;
+  border-radius: $radius-lg;
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  color: #fff;
+  text-align: center;
+  max-width: 900px;
+
+  @include media-md {
+    padding: 32px 16px;
+  }
+}
+
+.ctaTitle {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 8px;
+
+  @include media-md {
+    font-size: 20px;
+  }
+}
+
+.ctaText {
+  color: #dbeafe;
+  margin-bottom: 20px;
+}
+
+.ctaActions {
+  margin-bottom: 24px;
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  background: #fff;
+  color: $color-primary;
+  border-radius: $radius;
+  font-weight: 600;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: #f0f6ff;
+  }
+}
+
+.ctaContacts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(140px, 1fr));
+  gap: 12px;
+  max-width: 720px;
+  margin: 0 auto;
+
+  @include media-md {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.contactBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  border-radius: $radius;
+  font-weight: 600;
+  color: #fff;
+  transition:
+    filter 0.15s ease,
+    transform 0.1s ease;
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.whatsapp {
+  background: #25d366;
+}
+.telegram {
+  background: #229ed9;
+}
+.email {
+  background: #6b7280;
+}
+.phone {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}

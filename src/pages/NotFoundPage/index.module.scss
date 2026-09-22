@@ -1,0 +1,116 @@
+.page {
+  padding: 80px 0 96px;
+  background: linear-gradient(180deg, #f0f6ff 0%, #ffffff 100%);
+
+  @include media-md {
+    padding: 48px 0 64px;
+  }
+}
+
+.inner {
+  max-width: 640px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.code {
+  font-size: 96px;
+  font-weight: 800;
+  line-height: 1;
+  color: $color-primary;
+  letter-spacing: 4px;
+
+  @include media-md {
+    font-size: 64px;
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+
+  @include media-md {
+    font-size: 24px;
+  }
+}
+
+.text {
+  color: $color-text-muted;
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 480px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+
+  @include media-md {
+    flex-direction: column;
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  background: $color-primary;
+  color: #fff;
+  border-radius: $radius;
+  font-weight: 600;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: $color-primary-dark;
+  }
+}
+
+.secondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  background: #fff;
+  color: $color-text;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  font-weight: 600;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease;
+
+  &:hover {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  justify-content: center;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid $color-border;
+  width: 100%;
+}
+
+.link {
+  color: $color-text-muted;
+  font-size: 14px;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
