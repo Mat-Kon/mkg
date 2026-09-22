@@ -1,0 +1,471 @@
+// ================= HERO =================
+.hero {
+  background: linear-gradient(180deg, #f0f6ff 0%, #ffffff 100%);
+  padding: 64px 0 72px;
+
+  @include media-md {
+    padding: 40px 0 48px;
+  }
+}
+
+.heroInner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 48px;
+  align-items: center;
+
+  @include media-md {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.heroBadge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 6px 12px;
+  background: #dbeafe;
+  color: $color-primary-dark;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.heroTitle {
+  font-size: 44px;
+  line-height: 1.15;
+  font-weight: 700;
+
+  @include media-md {
+    font-size: 30px;
+  }
+}
+
+.heroText {
+  font-size: 18px;
+  color: $color-text-muted;
+  max-width: 560px;
+
+  @include media-md {
+    font-size: 16px;
+  }
+}
+
+.heroActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  background: $color-primary;
+  color: #fff;
+  border-radius: $radius;
+  font-weight: 600;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: $color-primary-dark;
+  }
+}
+
+.secondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  background: #fff;
+  color: $color-text;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  font-weight: 600;
+  transition: border-color 0.15s ease;
+
+  &:hover {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+}
+
+.heroCard {
+  background: #fff;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.heroCardTitle {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: $color-primary;
+}
+
+.heroCardText {
+  color: $color-text-muted;
+  margin-bottom: 16px;
+}
+
+.heroCardList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  li {
+    position: relative;
+    padding-left: 22px;
+    color: $color-text;
+
+    &::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: $color-primary;
+      font-weight: 700;
+    }
+  }
+}
+
+// ================= TRUST =================
+.trust {
+  background: #fff;
+  border-top: 1px solid $color-border;
+  border-bottom: 1px solid $color-border;
+}
+
+.trustGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 32px 16px;
+  gap: 24px;
+
+  @include media-md {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 24px 16px;
+  }
+}
+
+.trustItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+}
+
+.trustValue {
+  font-size: 28px;
+  font-weight: 700;
+  color: $color-primary;
+}
+
+.trustLabel {
+  font-size: 14px;
+  color: $color-text-muted;
+}
+
+// ================= COMMON SECTIONS =================
+.section {
+  padding: 72px 0;
+
+  @include media-md {
+    padding: 48px 0;
+  }
+}
+
+.sectionAlt {
+  background: $color-bg-alt;
+}
+
+.sectionHead {
+  text-align: center;
+  margin-bottom: 40px;
+
+  @include media-md {
+    margin-bottom: 28px;
+  }
+}
+
+.sectionTitle {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+
+  @include media-md {
+    font-size: 24px;
+  }
+}
+
+.sectionSubtitle {
+  color: $color-text-muted;
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 16px;
+}
+
+.sectionCta {
+  text-align: center;
+  margin-top: 28px;
+}
+
+.textLink {
+  color: $color-primary;
+  font-weight: 600;
+
+  &:hover {
+    color: $color-primary-dark;
+  }
+}
+
+// ================= SERVICES =================
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+
+  @include media-md {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.serviceCard {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  background: #fff;
+  transition:
+    border-color 0.15s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    border-color: $color-primary;
+    transform: translateY(-2px);
+  }
+}
+
+.serviceIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  background: #dbeafe;
+  color: $color-primary;
+  border-radius: $radius;
+  font-size: 22px;
+}
+
+.serviceTitle {
+  font-weight: 600;
+  color: $color-text;
+}
+
+// ================= FEATURES =================
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+
+  @include media-md {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.featureCard {
+  padding: 24px;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  background: #fff;
+}
+
+.featureTitle {
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: $color-primary;
+}
+
+.featureText {
+  color: $color-text-muted;
+  font-size: 15px;
+}
+
+// ================= STEPS =================
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+
+  @include media-md {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.stepCard {
+  padding: 24px;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  background: #fff;
+}
+
+.stepNum {
+  font-size: 28px;
+  font-weight: 700;
+  color: $color-primary;
+  margin-bottom: 8px;
+}
+
+.stepTitle {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.stepText {
+  color: $color-text-muted;
+  font-size: 15px;
+}
+
+// ================= REVIEWS =================
+.reviewsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+
+  @include media-md {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.reviewCard {
+  padding: 24px;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  background: #fff;
+}
+
+.reviewText {
+  color: $color-text;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.reviewName {
+  color: $color-text-muted;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+// ================= FINAL CTA =================
+.cta {
+  padding: 72px 0;
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  color: #fff;
+
+  @include media-md {
+    padding: 48px 0;
+  }
+}
+
+.ctaInner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.ctaTitle {
+  font-size: 32px;
+  font-weight: 700;
+
+  @include media-md {
+    font-size: 24px;
+  }
+}
+
+.ctaText {
+  color: #dbeafe;
+  max-width: 560px;
+}
+
+.ctaActions {
+  margin-top: 8px;
+
+  .primaryBtn {
+    background: #fff;
+    color: $color-primary;
+
+    &:hover {
+      background: #f0f6ff;
+    }
+  }
+}
+
+.ctaContacts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+  width: 100%;
+  max-width: 720px;
+
+  @include media-md {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.contactBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  border-radius: $radius;
+  font-weight: 600;
+  color: #fff;
+  transition:
+    transform 0.1s ease,
+    filter 0.15s ease;
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.whatsapp {
+  background: #25d366;
+}
+.telegram {
+  background: #229ed9;
+}
+.email {
+  background: #6b7280;
+}
+.phone {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}

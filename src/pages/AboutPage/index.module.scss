@@ -1,0 +1,425 @@
+.page {
+  padding-bottom: 0;
+}
+
+// ================= HERO =================
+.hero {
+  padding: 48px 0 56px;
+  background: linear-gradient(180deg, #f0f6ff 0%, #ffffff 100%);
+
+  @include media-md {
+    padding: 32px 0 40px;
+  }
+}
+
+.heroInner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 48px;
+  align-items: center;
+
+  @include media-md {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 6px 12px;
+  background: #dbeafe;
+  color: $color-primary-dark;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.title {
+  font-size: 40px;
+  line-height: 1.15;
+  font-weight: 700;
+
+  @include media-md {
+    font-size: 28px;
+  }
+}
+
+.lead {
+  font-size: 18px;
+  color: $color-text-muted;
+  max-width: 520px;
+
+  @include media-md {
+    font-size: 16px;
+  }
+}
+
+.heroActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  background: $color-primary;
+  color: #fff;
+  border-radius: $radius;
+  font-weight: 600;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: $color-primary-dark;
+  }
+}
+
+.secondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  background: #fff;
+  color: $color-text;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  font-weight: 600;
+  transition: border-color 0.15s ease;
+
+  &:hover {
+    border-color: $color-primary;
+    color: $color-primary;
+  }
+}
+
+.photoWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.photoPlaceholder {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 4 / 5;
+  background: $color-bg-alt;
+  border: 1px dashed $color-border;
+  border-radius: $radius-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text-muted;
+  font-size: 14px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: $radius-lg;
+  }
+}
+
+// ================= NUMBERS =================
+.numbers {
+  border-top: 1px solid $color-border;
+  border-bottom: 1px solid $color-border;
+  background: #fff;
+}
+
+.numbersGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding: 32px 16px;
+
+  @include media-md {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 24px 16px;
+  }
+}
+
+.numberItem {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.numberValue {
+  font-size: 28px;
+  font-weight: 700;
+  color: $color-primary;
+}
+
+.numberLabel {
+  font-size: 14px;
+  color: $color-text-muted;
+}
+
+// ================= COMMON =================
+.section {
+  padding: 72px 0;
+
+  @include media-md {
+    padding: 48px 0;
+  }
+}
+
+.sectionAlt {
+  background: $color-bg-alt;
+}
+
+.sectionHead {
+  text-align: center;
+  margin-bottom: 40px;
+
+  @include media-md {
+    margin-bottom: 28px;
+  }
+}
+
+.sectionTitle {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+
+  @include media-md {
+    font-size: 24px;
+  }
+}
+
+.sectionSubtitle {
+  color: $color-text-muted;
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 16px;
+}
+
+// ================= STORY =================
+.story {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.story .sectionTitle {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.paragraph {
+  font-size: 17px;
+  line-height: 1.7;
+  color: $color-text;
+  margin-bottom: 16px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include media-md {
+    font-size: 16px;
+  }
+}
+
+// ================= PRINCIPLES =================
+.principlesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+
+  @include media-md {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.principleCard {
+  padding: 24px;
+  background: #fff;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+}
+
+.principleTitle {
+  font-weight: 700;
+  color: $color-primary;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.principleText {
+  color: $color-text-muted;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+// ================= SKILLS =================
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+
+  @include media-md {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+.skillCard {
+  padding: 24px;
+  background: #fff;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+}
+
+.skillTitle {
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: $color-text;
+}
+
+.skillText {
+  color: $color-text-muted;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+// ================= DIFFERENCE =================
+.diff {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.diffTitle {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+
+  @include media-md {
+    font-size: 22px;
+  }
+}
+
+.diffText {
+  color: $color-text;
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 12px;
+
+  &:last-child {
+    margin-bottom: 0;
+    color: $color-text-muted;
+    font-style: italic;
+  }
+}
+
+// ================= CTA =================
+.cta {
+  padding: 72px 0;
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  color: #fff;
+
+  @include media-md {
+    padding: 48px 0;
+  }
+}
+
+.ctaInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.ctaTitle {
+  font-size: 32px;
+  font-weight: 700;
+
+  @include media-md {
+    font-size: 24px;
+  }
+}
+
+.ctaText {
+  color: #dbeafe;
+  max-width: 560px;
+}
+
+.ctaActions {
+  margin-top: 8px;
+}
+
+.primaryBtnLight {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  background: #fff;
+  color: $color-primary;
+  border-radius: $radius;
+  font-weight: 600;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: #f0f6ff;
+  }
+}
+
+.ctaContacts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+  width: 100%;
+  max-width: 720px;
+
+  @include media-md {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.contactBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  border-radius: $radius;
+  font-weight: 600;
+  color: #fff;
+  transition:
+    filter 0.15s ease,
+    transform 0.1s ease;
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.whatsapp {
+  background: #25d366;
+}
+.telegram {
+  background: #229ed9;
+}
+.email {
+  background: #6b7280;
+}
+.phone {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}

@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout";
-import HomePage from "./pages/HomePage";
-import AboutPage from "./pages/AboutPage";
-import ServicesPage from "./pages/ServicesPage";
+import { HomePage } from "./pages/HomePage";
+import { AboutPage } from "./pages/AboutPage";
+import { ServicesPage } from "./pages/ServicesPage";
 import WorksPage from "./pages/WorksPage";
 import { CalculatorPage } from "./pages/CalculatorPage";
 import ContactsPage from "./pages/ContactsPage";

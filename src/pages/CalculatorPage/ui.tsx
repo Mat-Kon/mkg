@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { SERVICES, type Service } from "@/data/services";
-import { formatPrice } from "../../utils/format";
-import { CONTACTS } from "../../data/contacts";
+import { formatPrice } from "@/utils/format";
+import { CONTACTS } from "@/data/contacts";
 import styles from "./index.module.scss";
 
 type Row = {
@@ -188,7 +188,7 @@ export const CalculatorPage = () => {
         </button>
       </div>
 
-      {/* Печатная версия: скрыта на экране, видна только при печати */}
+      {/* Печатная версия */}
       <div className={styles.printOnly}>
         <div className={styles.printHeader}>
           <div className={styles.printBrand}>Матвеев Мастер</div>
@@ -267,7 +267,7 @@ export const CalculatorPage = () => {
           <span className={styles.totalNote}>по договорённости</span>
         </div>
         <div className={styles.totalRow}>
-          <span className={styles.totalLabel}>Подъем материалов</span>
+          <span className={styles.totalLabel}>Подъём материалов</span>
           <span className={styles.totalNote}>по договорённости</span>
         </div>
         <div className={`${styles.totalRow} ${styles.totalFinal}`}>
