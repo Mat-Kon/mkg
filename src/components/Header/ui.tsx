@@ -3,12 +3,13 @@ import { NavLink } from "react-router-dom";
 import styles from "./index.module.scss";
 
 const NAV = [
-  { to: "/", label: "Главная", end: true },
-  { to: "/services", label: "Услуги" },
-  { to: "/calculator", label: "Калькулятор" },
-  { to: "/works", label: "Работы" },
-  { to: "/about", label: "О нас" },
-  { to: "/contacts", label: "Контакты" },
+  { to: '/', label: 'Главная', end: true },
+  { to: '/services', label: 'Услуги' },
+  { to: '/calculator', label: 'Калькулятор' },
+  { to: '/works', label: 'Мои работы' },
+  { to: '/blog', label: 'Блог' },
+  { to: '/about', label: 'Обо мне' },
+  { to: '/contacts', label: 'Контакты' },
 ];
 
 export const Header = () => {

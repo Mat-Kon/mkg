@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import styles from "./index.module.scss";
 
 const LINKS: { to: string; label: string }[] = [
-  { to: "/", label: "Главная" },
-  { to: "/services", label: "Услуги и цены" },
-  { to: "/works", label: "Мои работы" },
-  { to: "/calculator", label: "Калькулятор" },
-  { to: "/about", label: "Обо мне" },
-  { to: "/contacts", label: "Контакты" },
+  { to: '/', label: 'Главная' },
+  { to: '/services', label: 'Услуги и цены' },
+  { to: '/works', label: 'Мои работы' },
+  { to: '/blog', label: 'Блог' },
+  { to: '/calculator', label: 'Калькулятор' },
+  { to: '/about', label: 'Обо мне' },
+  { to: '/contacts', label: 'Контакты' },
 ];
 
 export const NotFoundPage = () => {

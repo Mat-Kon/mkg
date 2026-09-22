@@ -7,11 +7,12 @@ type FooterLink = {
 };
 
 const NAV_LINKS: FooterLink[] = [
-  { to: "/services", label: "Услуги" },
-  { to: "/calculator", label: "Калькулятор" },
-  { to: "/works", label: "Мои работы" },
-  { to: "/about", label: "Обо мне" },
-  { to: "/contacts", label: "Контакты" },
+  { to: '/services', label: 'Услуги' },
+  { to: '/calculator', label: 'Калькулятор' },
+  { to: '/works', label: 'Мои работы' },
+  { to: '/blog', label: 'Блог' },
+  { to: '/about', label: 'Обо мне' },
+  { to: '/contacts', label: 'Контакты' },
 ];
 
 export const Footer = () => {
