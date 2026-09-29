@@ -66,6 +66,10 @@
   gap: 12px;
   flex-wrap: wrap;
   margin-top: 8px;
+
+  @include media-md {
+    justify-content: flex-end;
+  }
 }
 
 .primaryBtn {
@@ -105,6 +109,10 @@
 .photoWrap {
   display: flex;
   justify-content: center;
+
+  img {
+    border-radius: 45%;
+  }
 }
 
 .photoPlaceholder {
@@ -137,12 +145,11 @@
 
 .numbersGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   padding: 32px 16px;
 
   @include media-md {
-    grid-template-columns: repeat(2, 1fr);
     padding: 24px 16px;
   }
 }

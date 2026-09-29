@@ -62,6 +62,10 @@
   gap: 12px;
   flex-wrap: wrap;
   margin-top: 8px;
+
+  @include media-md {
+    justify-content: flex-end;
+  }
 }
 
 .primaryBtn {
@@ -271,7 +275,6 @@
   background: #dbeafe;
   color: $color-primary;
   border-radius: $radius;
-  font-size: 22px;
 }
 
 .serviceTitle {
@@ -302,11 +305,18 @@
   font-weight: 700;
   margin-bottom: 8px;
   color: $color-primary;
+
+  @include media-md {
+    text-align: center;
+  }
 }
 
 .featureText {
   color: $color-text-muted;
   font-size: 15px;
+  @include media-md {
+    text-align: center;
+  }
 }
 
 // ================= STEPS =================
@@ -333,16 +343,28 @@
   font-weight: 700;
   color: $color-primary;
   margin-bottom: 8px;
+
+  @include media-md {
+    text-align: center;
+  }
 }
 
 .stepTitle {
   font-weight: 700;
   margin-bottom: 6px;
+
+  @include media-md {
+    text-align: center;
+  }
 }
 
 .stepText {
   color: $color-text-muted;
   font-size: 15px;
+
+  @include media-md {
+    text-align: center;
+  }
 }
 
 // ================= REVIEWS =================
@@ -509,7 +531,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform .4s ease;
+  transition: transform 0.4s ease;
 }
 
 .workOverlay {

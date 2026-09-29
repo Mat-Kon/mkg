@@ -14,29 +14,37 @@ export type Work = {
 
 export const WORKS: Work[] = [
   {
-    slug: "balkon-pod-klyuch-batumi",
-    title: "Балкон под ключ, Батуми",
-    short: "Остекление, утепление, отделка",
-    cover: "/images/works/balkon-1/cover.jpg",
+    slug: "balkon-pod-klyuch",
+    title: "Балкон под ключ. Берюзовая вагонка",
+    short: "Утепление, отделка, шкаф",
+    cover: "/images/works/1/IMG_1992.jpeg",
     description:
-      "Полный цикл работ по балкону: остекление, утепление, обшивка стен, чистовой пол, потолок ПВХ. Установил подоконник и отлив, вывел проводку под свет. Работы заняли 4 дня.",
+      "Полный цикл работ по внутренней отделке балкона: утепление, обшивка стен вагонкой с окрашиванием в три слоя, чистовой пол, потолок ПВХ. Установил подоконник, вывел проводку под свет и розетки. Работы заняли 5 дней.",
     images: [
-      { src: "/images/works/balkon-1/01.jpg", alt: "Общий вид" },
-      { src: "/images/works/balkon-1/02.jpg", alt: "Отделка стен" },
-      { src: "/images/works/balkon-1/03.jpg", alt: "Потолок и пол" },
-      { src: "/images/works/balkon-1/04.jpg", alt: "Вид снаружи" },
+      { src: "/images/works/1/IMG_1991.jpeg", alt: "Общий вид" },
+      { src: "/images/works/1/IMG_1992.jpeg", alt: "Отделка стен" },
+      { src: "/images/works/1/IMG_1993.jpeg", alt: "Потолок и пол" },
+      { src: "/images/works/1/IMG_1995.jpeg", alt: "Вид снаружи" },
+      { src: "/images/works/1/IMG_2113.jpeg", alt: "Вид снаружи" },
+      { src: "/images/works/1/IMG_2115.jpeg", alt: "Вид снаружи" },
     ],
   },
   {
-    slug: "zamena-steklopaketa",
-    title: "Замена стеклопакета",
-    short: "Окно в квартире",
-    cover: "/images/works/steklopaket/cover.jpg",
+    slug: "otdelka-pod-kluch-seraya",
+    title: "Отделка внутренняя под ключ.",
+    short: "Утепление, отделка, винтажная проводка",
+    cover: "/images/works/2/IMG_2166.jpeg",
     description:
-      "Заменил стеклопакет и уплотнители. Отрегулировал створки, чтобы не продувало. Клиентка жаловалась на шум с улицы — поставил энергосберегающий стеклопакет.",
+      "Утепление пеноплексом, поднятии пола, отделка вагонкой, монтаж винтажной проводки, отделка потолка ПВХ панелями, установка света, замена подоконников.",
     images: [
-      { src: "/images/works/steklopaket/01.jpg", alt: "До" },
-      { src: "/images/works/steklopaket/02.jpg", alt: "После" },
+      { src: "/images/works/2/IMG_2131.jpeg", alt: "фото" },
+      { src: "/images/works/2/IMG_2129.jpeg", alt: "фото" },
+      { src: "/images/works/2/IMG_2136.jpeg", alt: "фото" },
+      { src: "/images/works/2/IMG_2137.jpeg", alt: "фото" },
+      { src: "/images/works/2/IMG_2165.jpeg", alt: "фото" },
+      { src: "/images/works/2/IMG_2166.jpeg", alt: "фото" },
+      { src: "/images/works/2/IMG_2169.jpeg", alt: "фото" },
+      { src: "/images/works/2/IMG_2171.jpeg", alt: "фото" },
     ],
   },
   {

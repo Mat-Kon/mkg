@@ -12,6 +12,10 @@
   align-items: center;
   gap: 24px;
   height: 64px;
+
+  @media (max-width: $bp-md) {
+    justify-content: space-between;
+  }
 }
 
 .logo {
@@ -24,6 +28,13 @@
 }
 
 .logoMark { font-size: 24px; }
+.logoIcon {
+  width: 40px;
+  height: 40px;
+  display: block;
+  fill: currentColor;
+  color: $color-primary;
+}
 
 .nav {
   display: flex;
@@ -54,6 +65,13 @@
   transition: color .15s;
 
   &:hover { color: $color-text; }
+
+  @media (max-width: $bp-md) {
+    text-align: center;
+    padding: 10px;
+    border: $color-primary solid 1px;
+    border-radius: $radius-md;
+  }
 }
 
 .linkActive { color: $color-primary; }

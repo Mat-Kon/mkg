@@ -45,12 +45,16 @@
 }
 
 .mainImageWrap {
-  width: 100%;
+  width: 50%;
   min-height: 320px;
   background: $color-bg-alt;
   border-radius: $radius-lg;
   overflow: hidden;
   margin-bottom: 12px;
+  
+  @include media-md {
+    width: 100%;
+  }
 }
 
 .mainImage {

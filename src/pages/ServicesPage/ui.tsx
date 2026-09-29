@@ -54,9 +54,13 @@ export const ServicesPage = () => {
     <div className={styles.page}>
       <div className={`container ${styles.head}`}>
         <h1 className={styles.title}>Услуги и цены</h1>
+        <p className={styles.subtitle}></p>
+        Ниже — цены на работы для ознакомления.
         <p className={styles.subtitle}>
-          Ниже — цены на работы. Материалы считаются отдельно. Доставка и подъём
-          материалов — по договорённости.
+          Материалы считаются отдельно и оплачиваются по чекам.
+        </p>
+        <p className={styles.subtitle}>
+          Доставка и подъём материалов — по договорённости.
         </p>
       </div>
 

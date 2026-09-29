@@ -97,10 +97,6 @@ export const AboutPage = () => {
             <div className={styles.numberLabel}>лет опыта</div>
           </div>
           <div className={styles.numberItem}>
-            <div className={styles.numberValue}>5</div>
-            <div className={styles.numberLabel}>объектов в месяц</div>
-          </div>
-          <div className={styles.numberItem}>
             <div className={styles.numberValue}>500+</div>
             <div className={styles.numberLabel}>выполненных работ</div>
           </div>

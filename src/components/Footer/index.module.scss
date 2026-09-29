@@ -8,7 +8,7 @@
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   gap: 32px;
-  padding: 40px 16px;
+  padding: 40px;
 
   @media (max-width: $bp-md) {
     grid-template-columns: 1fr;
@@ -32,6 +32,10 @@
 .title {
   font-weight: 600;
   margin-bottom: 4px;
+
+  @media (max-width: $bp-md) {
+    text-align: center;
+  }
 }
 
 .link {
@@ -39,6 +43,17 @@
   transition: color .15s;
 
   &:hover { color: $color-primary; }
+
+  @media (max-width: $bp-md) {
+    text-align: center;
+  }
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
 }
 
 .muted { color: $color-text-muted; font-size: 14px; }

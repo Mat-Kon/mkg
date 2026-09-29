@@ -20,14 +20,13 @@ export const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      <div className={`container ${styles.inner}`}>
+      <div className={styles.inner}>
         <div className={styles.col}>
           <div className={styles.brand}>
-            <span className={styles.brandMark}>ММ</span>
             <span>Матвеев Мастер</span>
           </div>
           <p className={styles.muted}>
-            Ремонтирую и обслуживаю окна и балконы. Работаю с 2010 года. Приеду
+            Ремонтирую и обслуживаю окна и балконы. Работаю с 2014 года. Приеду
             на замер бесплатно.
           </p>
         </div>
@@ -47,13 +46,13 @@ export const Footer = () => {
           <div className={styles.title}>Контакты</div>
           <div className={styles.links}>
             <a href="tel:+79000000000" className={styles.link}>
-              +7 (900) 000-00-00
+              +995 511-305-189
             </a>
             <a href="mailto:info@matveev-master.ru" className={styles.link}>
-              info@matveev-master.ru
+              sec.matkon@gmail.com
             </a>
-            <span className={styles.muted}>г. Москва, ул. Примерная, 1</span>
-            <span className={styles.muted}>Пн–Вс: 9:00 – 21:00</span>
+            <span className={styles.muted}>г. Батуми</span>
+            <span className={styles.muted}>Пн–Вс: 9:00 – 20:00</span>
           </div>
         </div>
       </div>
@@ -61,7 +60,7 @@ export const Footer = () => {
       <div className={styles.bottom}>
         <div className={`container ${styles.bottomInner}`}>
           <span>© {year} Матвеев Мастер. Все права защищены.</span>
-          <span className={styles.muted}>ИНН 000000000000</span>
+          {/* <span className={styles.muted}>ИНН 000000000000</span> */}
         </div>
       </div>
     </footer>

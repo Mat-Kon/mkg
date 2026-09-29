@@ -70,7 +70,7 @@ export const ContactsPage = () => {
             <div className={styles.infoTitle}>Режим работы</div>
             <div className={styles.infoRow}>
               <span>Понедельник – Воскресенье</span>
-              <span>9:00 – 21:00</span>
+              <span>9:00 – 20:00</span>
             </div>
             <div className={styles.infoRow}>
               <span>Выезд на замер</span>
@@ -81,8 +81,7 @@ export const ContactsPage = () => {
           <div className={styles.infoBlock}>
             <div className={styles.infoTitle}>География работ</div>
             <div className={styles.infoText}>
-              Батуми и ближайшие населённые пункты. По сложным проектам выезжаю
-              в соседние города — уточняйте по телефону.
+              Батуми и ближайшие населённые пункты.
             </div>
           </div>
         </div>
@@ -104,7 +103,7 @@ export const ContactsPage = () => {
         </div>
       </div>
 
-      <div className={`container ${styles.final}`}>
+      <div className={styles.final}>
         <div className={styles.finalCard}>
           <h2 className={styles.finalTitle}>Не знаете, с чего начать?</h2>
           <p className={styles.finalText}>

@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { CONTACTS } from "@/data/contacts";
 import { WORKS } from "@/data/works";
-import styles from "./index.module.scss";
 import { ImageWithFallback } from "@/components/ImageWithFallback";
+import { ServiceIcon, type ServiceIconName } from "@/components/ServiceIcon";
+import styles from "./index.module.scss";
 
 type Feature = {
   title: string;
@@ -15,10 +16,10 @@ type Step = {
   text: string;
 };
 
-type Review = {
-  name: string;
-  text: string;
-};
+// type Review = {
+//   name: string;
+//   text: string;
+// };
 
 const FEATURES: Feature[] = [
   {
@@ -26,12 +27,12 @@ const FEATURES: Feature[] = [
     text: "Работаю сам, без посредников. Вы всегда знаете, кто и что делает.",
   },
   {
-    title: "Опыт с 2010 года",
-    text: "14 лет ремонтирую окна и балконы. Знаю, где что может пойти не так.",
+    title: "Опыт с 2014 года",
+    text: "12 лет ремонтирую окна и балконы. Знаю, где что может пойти не так.",
   },
   {
     title: "Честная смета",
-    text: "Считаю при вас, без «дополнительных» сюрпризов в конце.",
+    text: "Просчет в день замера, «фиксируемая» окончательная стоимость.",
   },
   {
     title: "Гарантия на работы",
@@ -48,7 +49,7 @@ const STEPS: Step[] = [
   {
     num: "02",
     title: "Замер",
-    text: "Приеду на объект бесплатно, посмотрю, что нужно сделать.",
+    text: "Приеду на объект бесплатно, посмотрю, выслушаю, посоветую.",
   },
   {
     num: "03",
@@ -62,28 +63,33 @@ const STEPS: Step[] = [
   },
 ];
 
-const REVIEWS: Review[] = [
-  {
-    name: "Ирина",
-    text: "Отрегулировал все окна, заменил уплотнители. Быстро, аккуратно, по делу. Рекомендую.",
-  },
-  {
-    name: "Артём",
-    text: "Отделал балкон под ключ. Всё чётко по смете, никаких накруток. Доволен результатом.",
-  },
-  {
-    name: "Марина",
-    text: "Помог с остеклением и заменил стеклопакет. Приятно иметь дело с мастером, а не с фирмой.",
-  },
-];
+// const REVIEWS: Review[] = [
+//   {
+//     name: "Ирина",
+//     text: "Отрегулировал все окна, заменил уплотнители. Быстро, аккуратно, по делу. Рекомендую.",
+//   },
+//   {
+//     name: "Артём",
+//     text: "Отделал балкон под ключ. Всё чётко по смете, никаких накруток. Доволен результатом.",
+//   },
+//   {
+//     name: "Марина",
+//     text: "Помог с остеклением и заменил стеклопакет. Приятно иметь дело с мастером, а не с фирмой.",
+//   },
+// ];
 
-const SERVICES_PREVIEW = [
-  "Остекление балконов и лоджий",
-  "Ремонт и регулировка окон ПВХ",
-  "Замена стеклопакетов и фурнитуры",
-  "Отделка балконов под ключ",
-  "Москитные сетки и отливы",
-  "Монтаж подоконников и плинтусов",
+type ServicePreview = {
+  icon: ServiceIconName;
+  title: string;
+};
+
+const SERVICES_PREVIEW: ServicePreview[] = [
+  { icon: "osteklenie", title: "Остекление балконов и лоджий" },
+  { icon: "remont", title: "Ремонт и регулировка окон ПВХ" },
+  { icon: "steklopaket", title: "Замена стеклопакетов и фурнитуры" },
+  { icon: "otdelka", title: "Отделка балконов под ключ" },
+  { icon: "setka", title: "Москитные сетки и отливы" },
+  { icon: "montazh", title: "Монтаж подоконников и плинтусов" },
 ];
 
 export const HomePage = () => {
@@ -93,7 +99,7 @@ export const HomePage = () => {
       <section className={styles.hero}>
         <div className={`container ${styles.heroInner}`}>
           <div className={styles.heroContent}>
-            <div className={styles.heroBadge}>Частный мастер · Тбилиси</div>
+            <div className={styles.heroBadge}>Частный мастер · Батуми</div>
             <h1 className={styles.heroTitle}>
               Ремонт и обслуживание окон и балконов
             </h1>
@@ -118,7 +124,7 @@ export const HomePage = () => {
             </p>
             <ul className={styles.heroCardList}>
               <li>Замер и смета — бесплатно</li>
-              <li>Работаю с 2010 года</li>
+              <li>Работаю с 2014 года</li>
               <li>Гарантия на все работы</li>
             </ul>
           </div>
@@ -129,7 +135,7 @@ export const HomePage = () => {
       <section className={styles.trust}>
         <div className={`container ${styles.trustGrid}`}>
           <div className={styles.trustItem}>
-            <div className={styles.trustValue}>14+</div>
+            <div className={styles.trustValue}>10+</div>
             <div className={styles.trustLabel}>лет опыта</div>
           </div>
           <div className={styles.trustItem}>
@@ -141,7 +147,7 @@ export const HomePage = () => {
             <div className={styles.trustLabel}>гарантия на работы</div>
           </div>
           <div className={styles.trustItem}>
-            <div className={styles.trustValue}>200+</div>
+            <div className={styles.trustValue}>500+</div>
             <div className={styles.trustLabel}>выполненных объектов</div>
           </div>
         </div>
@@ -158,10 +164,12 @@ export const HomePage = () => {
             </p>
           </div>
           <div className={styles.servicesGrid}>
-            {SERVICES_PREVIEW.map((title) => (
-              <div key={title} className={styles.serviceCard}>
-                <div className={styles.serviceIcon}>◧</div>
-                <div className={styles.serviceTitle}>{title}</div>
+            {SERVICES_PREVIEW.map((item) => (
+              <div key={item.title} className={styles.serviceCard}>
+                <div className={styles.serviceIcon}>
+                  <ServiceIcon name={item.icon} size={26} />
+                </div>
+                <div className={styles.serviceTitle}>{item.title}</div>
               </div>
             ))}
           </div>
@@ -209,7 +217,7 @@ export const HomePage = () => {
       </section>
 
       {/* REVIEWS */}
-      <section className={`${styles.section} ${styles.sectionAlt}`}>
+      {/* <section className={`${styles.section} ${styles.sectionAlt}`}>
         <div className="container">
           <div className={styles.sectionHead}>
             <h2 className={styles.sectionTitle}>Отзывы клиентов</h2>
@@ -223,7 +231,7 @@ export const HomePage = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* WORKS PREVIEW */}
       <section className={`${styles.section} ${styles.sectionAlt}`}>
@@ -231,7 +239,7 @@ export const HomePage = () => {
           <div className={styles.sectionHead}>
             <h2 className={styles.sectionTitle}>Мои работы</h2>
             <p className={styles.sectionSubtitle}>
-              Несколько объектов, которые я сделал в Батуми и рядом.
+              Несколько объектов, которые я сделал.
             </p>
           </div>
 
@@ -242,7 +250,7 @@ export const HomePage = () => {
                 to={`/works/${work.slug}`}
                 className={styles.workCard}
               >
-                <ImageWithFallback  
+                <ImageWithFallback
                   src={work.cover}
                   alt={work.title}
                   className={styles.workImage}

@@ -28,7 +28,7 @@ export const SERVICES: Service[] = [
   { id: 2, name: "Сварочные работы", price: 35, unit: "м.п.", category: "dop" },
   {
     id: 3,
-    name: "Отделка фасада",
+    name: "Отделка фасада профлистом",
     price: 50,
     unit: "м²",
     category: "osteklenie",

@@ -16,20 +16,28 @@
 .subtitle {
   color: $color-text-muted;
   font-size: 16px;
+  padding-bottom: 10px;
 }
 
 .row {
   background: #fff;
   border: 1px solid $color-border;
-  border-radius: $radius-md; // было $radius-lg
+  border-radius: $radius-md;
   padding: 16px;
+  margin: 10px 0;
+
+  & :first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 .select {
   width: 100%;
   padding: 10px 12px;
   border: 1px solid $color-border;
-  border-radius: $radius-sm; // было $radius
+  border-radius: $radius-sm;
   background: #fff;
   font: inherit;
   color: $color-text;
@@ -91,7 +99,7 @@
 .actions {
   display: flex;
   gap: 12px;
-  margin-bottom: 32px;
+  margin: 10px 0 32px;
 
   @include media-md {
     flex-direction: column;
