@@ -1,0 +1,95 @@
+.cta {
+  padding: 40px 24px;
+  border-radius: $radius-lg;
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  color: #fff;
+  text-align: center;
+  max-width: 900px;
+
+  @include media-md {
+    padding: 32px 16px;
+  }
+}
+
+.ctaTitle {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 8px;
+
+  @include media-md {
+    font-size: 20px;
+  }
+}
+
+.ctaText {
+  color: #dbeafe;
+  margin-bottom: 20px;
+}
+
+.ctaActions {
+  margin-bottom: 24px;
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  background: #fff;
+  color: $color-primary;
+  border-radius: $radius;
+  font-weight: 600;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: #f0f6ff;
+  }
+}
+
+.ctaContacts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(140px, 1fr));
+  gap: 12px;
+  max-width: 720px;
+  margin: 0 auto;
+  padding-bottom: 10px;
+
+  @include media-md {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.contactBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  border-radius: $radius;
+  font-weight: 600;
+  color: #fff;
+  transition:
+    filter 0.15s ease,
+    transform 0.1s ease;
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.whatsapp {
+  background: #25d366;
+}
+.telegram {
+  background: #229ed9;
+}
+.email {
+  background: #6b7280;
+}
+.phone {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}

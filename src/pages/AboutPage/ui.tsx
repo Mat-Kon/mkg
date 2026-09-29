@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { CONTACTS } from "@/data/contacts";
 import styles from "./index.module.scss";
+import { ContactCta } from "@/components/ContactCta";
 
 type Principle = {
   title: string;
@@ -195,51 +196,7 @@ export const AboutPage = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className={styles.cta}>
-        <div className={`container ${styles.ctaInner}`}>
-          <h2 className={styles.ctaTitle}>Хотите рассчитать свой объект?</h2>
-          <p className={styles.ctaText}>
-            Соберите нужные услуги в калькуляторе — покажу цену сразу.
-          </p>
-          <div className={styles.ctaActions}>
-            <Link to="/calculator" className={styles.primaryBtnLight}>
-              Открыть калькулятор
-            </Link>
-          </div>
-
-          <div className={styles.ctaContacts}>
-            <a
-              href={`https://wa.me/${CONTACTS.whatsapp}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${styles.contactBtn} ${styles.whatsapp}`}
-            >
-              WhatsApp
-            </a>
-            <a
-              href={`https://t.me/${CONTACTS.telegram}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${styles.contactBtn} ${styles.telegram}`}
-            >
-              Telegram
-            </a>
-            <a
-              href={`mailto:${CONTACTS.email}`}
-              className={`${styles.contactBtn} ${styles.email}`}
-            >
-              Почта
-            </a>
-            <a
-              href={`tel:${CONTACTS.phone}`}
-              className={`${styles.contactBtn} ${styles.phone}`}
-            >
-              Позвонить
-            </a>
-          </div>
-        </div>
-      </section>
+      <ContactCta />
     </div>
   );
 };

@@ -1,10 +1,10 @@
 import { Link, useParams } from "react-router-dom";
 import { useBlogPost } from "@/hooks/useBlog";
 import type { BlogBlock } from "@/types/blog";
-import { CONTACTS } from "@/data/contacts";
 import { ImageWithFallback } from "@/components/ImageWithFallback";
 import { Seo } from "@/components/Seo";
 import { Schema } from "@/components/Schema";
+import { ContactCta } from "@/components/ContactCta";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import styles from "./index.module.scss";
 
@@ -25,12 +25,14 @@ const renderBlock = (block: BlogBlock, i: number) => {
           {block.text}
         </p>
       );
+
     case "heading":
       return (
         <h2 key={i} className={styles.heading}>
           {block.text}
         </h2>
       );
+
     case "list":
       return (
         <ul key={i} className={styles.list}>
@@ -39,6 +41,7 @@ const renderBlock = (block: BlogBlock, i: number) => {
           ))}
         </ul>
       );
+
     case "image":
       return (
         <figure key={i} className={styles.figure}>
@@ -52,12 +55,25 @@ const renderBlock = (block: BlogBlock, i: number) => {
           )}
         </figure>
       );
+
+    case "quote":
+      return (
+        <blockquote key={i} className={styles.quote}>
+          <p className={styles.quoteText}>{block.text}</p>
+          {block.author && (
+            <cite className={styles.quoteAuthor}>— {block.author}</cite>
+          )}
+        </blockquote>
+      );
   }
 };
 
-export const BlogPostPage = () => {
-  const { slug } = useParams<{ slug: string }>();
-  const { data: post, loading, error } = useBlogPost(slug as string);
+type ContentProps = {
+  slug: string;
+};
+
+const BlogPostContent = ({ slug }: ContentProps) => {
+  const { data: post, loading, error } = useBlogPost(slug);
 
   if (loading) {
     return (
@@ -138,47 +154,17 @@ export const BlogPostPage = () => {
         {post.blocks.map(renderBlock)}
       </div>
 
-      <div className={`container ${styles.cta}`}>
-        <h2 className={styles.ctaTitle}>Нужен мастер по окнам и балконам?</h2>
-        <p className={styles.ctaText}>
-          Работаю в Батуми и рядом. Выезд на замер бесплатный.
-        </p>
-        <div className={styles.ctaActions}>
-          <Link to="/calculator" className={styles.primaryBtn}>
-            Открыть калькулятор
-          </Link>
-        </div>
-        <div className={styles.ctaContacts}>
-          <a
-            href={`https://wa.me/${CONTACTS.whatsapp}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${styles.contactBtn} ${styles.whatsapp}`}
-          >
-            WhatsApp
-          </a>
-          <a
-            href={`https://t.me/${CONTACTS.telegram}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${styles.contactBtn} ${styles.telegram}`}
-          >
-            Telegram
-          </a>
-          <a
-            href={`mailto:${CONTACTS.email}`}
-            className={`${styles.contactBtn} ${styles.email}`}
-          >
-            Почта
-          </a>
-          <a
-            href={`tel:${CONTACTS.phone}`}
-            className={`${styles.contactBtn} ${styles.phone}`}
-          >
-            Позвонить
-          </a>
-        </div>
-      </div>
+      <ContactCta />
     </article>
   );
+};
+
+export const BlogPostPage = () => {
+  const { slug } = useParams<{ slug: string }>();
+
+  if (!slug) {
+    return <NotFoundPage />;
+  }
+
+  return <BlogPostContent key={slug} slug={slug} />;
 };

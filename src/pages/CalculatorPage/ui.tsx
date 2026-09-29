@@ -3,6 +3,7 @@ import { SERVICES, type Service } from "@/data/services";
 import { formatPrice } from "@/utils/format";
 import { CONTACTS } from "@/data/contacts";
 import styles from "./index.module.scss";
+import { ContactCta } from "@/components/ContactCta";
 
 type Row = {
   rowId: number;
@@ -275,42 +276,8 @@ export const CalculatorPage = () => {
           <span className={styles.totalValue}>{formatPrice(total)}</span>
         </div>
       </div>
-
-      <div className={styles.contactBlock}>
-        <div className={styles.contactTitle}>
-          Свяжитесь со мной удобным способом
-        </div>
-        <div className={styles.contactGrid}>
-          <a
-            href={`https://wa.me/${CONTACTS.whatsapp}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${styles.contactBtn} ${styles.whatsapp}`}
-          >
-            WhatsApp
-          </a>
-          <a
-            href={`https://t.me/${CONTACTS.telegram}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${styles.contactBtn} ${styles.telegram}`}
-          >
-            Telegram
-          </a>
-          <a
-            href={`mailto:${CONTACTS.email}`}
-            className={`${styles.contactBtn} ${styles.email}`}
-          >
-            Почта
-          </a>
-          <a
-            href={`tel:${CONTACTS.phone}`}
-            className={`${styles.contactBtn} ${styles.phone}`}
-          >
-            Позвонить
-          </a>
-        </div>
-      </div>
+      
+      <ContactCta />
     </div>
   );
 };

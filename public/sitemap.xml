@@ -64,19 +64,19 @@
   </url>
 
   <!-- Блог -->
-  <url>
-    <loc>https://matveev-master.ge/blog/kak-vybrat-osteklenie-balkona</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://matveev-master.ge/blog/regulirovka-okon-pvh-zimoy</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://matveev-master.ge/blog/otdelka-balkona-svoimi-rukami</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
+<url>
+  <loc>https://matveev-master.ge/blog/otdelka-balkona-vnutri</loc>
+  <priority>0.6</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://matveev-master.ge/blog/demontazh-balkona</loc>
+  <priority>0.6</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://matveev-master.ge/blog/pochemu-pvh-paneli-luchshe</loc>
+  <priority>0.6</priority>
+  <changefreq>monthly</changefreq>
+</url>
 </urlset>

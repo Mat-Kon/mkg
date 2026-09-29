@@ -1,23 +1,24 @@
 export type BlogBlock =
-  | { type: "paragraph"; text: string }
-  | { type: "heading"; text: string }
-  | { type: "image"; src: string; alt: string; caption?: string }
-  | { type: "list"; items: string[] };
+  | { type: 'paragraph'; text: string }
+  | { type: 'heading'; text: string }
+  | { type: 'image'; src: string; alt: string; caption?: string }
+  | { type: 'list'; items: string[] }
+  | { type: 'quote'; text: string; author?: string }
 
 export type BlogPostMeta = {
-  slug: string;
-  title: string;
-  excerpt: string;
-  cover: string;
-  date: string;
-  readingTime: number;
-  tags: string[];
-};
+  slug: string
+  title: string
+  excerpt: string
+  cover: string
+  date: string
+  readingTime: number
+  tags: string[]
+}
 
 export type BlogPost = BlogPostMeta & {
-  blocks: BlogBlock[];
-};
+  blocks: BlogBlock[]
+}
 
 export type BlogIndex = {
-  posts: BlogPostMeta[];
-};
+  posts: BlogPostMeta[]
+}

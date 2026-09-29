@@ -63,6 +63,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+  padding-bottom: 10px;
 }
 
 .tag {
@@ -100,7 +101,6 @@
   line-height: 1.75;
   color: $color-text;
 
-  // Первая буква первого абзаца
   > .paragraph:first-of-type::first-letter {
     font-size: 3.2em;
     float: left;
@@ -184,6 +184,41 @@
   font-style: italic;
 }
 
+// ================= QUOTE =================
+.quote {
+  margin: 32px 0;
+  padding: 20px 24px;
+  border-left: 4px solid $color-primary;
+  background: #f0f6ff;
+  border-radius: 0 $radius $radius 0;
+
+  @include media-md {
+    margin: 24px 0;
+    padding: 16px 18px;
+  }
+}
+
+.quoteText {
+  font-size: 17px;
+  line-height: 1.65;
+  color: $color-text;
+  font-style: italic;
+  margin: 0;
+
+  @include media-md {
+    font-size: 16px;
+  }
+}
+
+.quoteAuthor {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  color: $color-text-muted;
+  font-style: normal;
+  font-weight: 600;
+}
+
 // ================= STATUS =================
 .status {
   color: $color-text-muted;
@@ -238,51 +273,4 @@
   &:hover {
     background: #f0f6ff;
   }
-}
-
-.ctaContacts {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(140px, 1fr));
-  gap: 12px;
-  max-width: 720px;
-  margin: 0 auto;
-
-  @include media-md {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.contactBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 16px;
-  border-radius: $radius;
-  font-weight: 600;
-  color: #fff;
-  transition:
-    filter 0.15s ease,
-    transform 0.1s ease;
-
-  &:hover {
-    filter: brightness(1.1);
-  }
-
-  &:active {
-    transform: translateY(1px);
-  }
-}
-
-.whatsapp {
-  background: #25d366;
-}
-.telegram {
-  background: #229ed9;
-}
-.email {
-  background: #6b7280;
-}
-.phone {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.35);
 }
