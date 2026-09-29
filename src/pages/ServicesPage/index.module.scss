@@ -1,3 +1,5 @@
+@use 'sass:color'; 
+
 .page {
   padding: 48px 0 64px;
 
@@ -59,7 +61,7 @@
   cursor: pointer;
 
   &:hover {
-    background: darken($color-bg-alt, 2%);
+    background: color.adjust($color-bg-alt, $lightness: -2%);
   }
 
   @include media-md {

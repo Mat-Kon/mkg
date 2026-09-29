@@ -26,7 +26,7 @@ export const WorkDetailPage = () => {
         </Link>
       </div>
 
-      <div className={`container ${styles.head}`}>
+      <div className={styles.head}>
         <h1 className={styles.title}>{work.title}</h1>
         <p className={styles.short}>{work.short}</p>
       </div>
@@ -64,7 +64,7 @@ export const WorkDetailPage = () => {
         )}
       </div>
 
-      <div className={`container ${styles.description}`}>
+      <div className={styles.description}>
         <h2 className={styles.descTitle}>Что было сделано</h2>
         <p className={styles.descText}>{work.description}</p>
       </div>

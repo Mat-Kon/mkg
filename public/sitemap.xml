@@ -1,16 +1,82 @@
-<url>
-  <loc>https://matveev-master.ge/blog</loc>
-  <priority>0.8</priority>
-</url>
-<url>
-  <loc>https://matveev-master.ge/blog/kak-vybrat-osteklenie-balkona</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>https://matveev-master.ge/blog/regulirovka-okon-pvh-zimoy</loc>
-  <priority>0.7</priority>
-</url>
-<url>
-  <loc>https://matveev-master.ge/blog/otdelka-balkona-svoimi-rukami</loc>
-  <priority>0.7</priority>
-</url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://matveev-master.ge/</loc>
+    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://matveev-master.ge/services</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://matveev-master.ge/works</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://matveev-master.ge/blog</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://matveev-master.ge/about</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://matveev-master.ge/contacts</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Работы -->
+  <url>
+    <loc>https://matveev-master.ge/works/balkon-pod-klyuch</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://matveev-master.ge/works/otdelka-pod-kluch-seraya</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://matveev-master.ge/works/osteklenie-lodzhii</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://matveev-master.ge/works/balkon-pod-klyuch-fistashka</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://matveev-master.ge/works/otdelks-balkona-pvh-mramor</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://matveev-master.ge/works/balkon-pod-klyuch-otdelka-pvh</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- Блог -->
+  <url>
+    <loc>https://matveev-master.ge/blog/kak-vybrat-osteklenie-balkona</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://matveev-master.ge/blog/regulirovka-okon-pvh-zimoy</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://matveev-master.ge/blog/otdelka-balkona-svoimi-rukami</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+</urlset>
