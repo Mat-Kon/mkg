@@ -1,24 +1,36 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useT } from "@/i18n/context";
+import { LangSwitcher } from "@/components/LangSwitcher";
 import styles from "./index.module.scss";
 
-const NAV = [
-  { to: "/", label: "Главная", end: true },
-  { to: "/services", label: "Услуги" },
-  { to: "/calculator", label: "Калькулятор" },
-  { to: "/works", label: "Мои работы" },
-  { to: "/blog", label: "Блог" },
-  { to: "/about", label: "Обо мне" },
-  { to: "/contacts", label: "Контакты" },
+type NavItem = {
+  to: string;
+  labelKey: keyof ReturnType<typeof useT>["t"]["nav"];
+  end?: boolean;
+};
+
+const NAV: NavItem[] = [
+  { to: "/", labelKey: "home", end: true },
+  { to: "/services", labelKey: "services" },
+  { to: "/calculator", labelKey: "calculator" },
+  { to: "/works", labelKey: "works" },
+  { to: "/blog", labelKey: "blog" },
+  { to: "/about", labelKey: "about" },
+  { to: "/contacts", labelKey: "contacts" },
 ];
 
 export const Header = () => {
-  const [open, setOpen] = useState(false);
+  const { t } = useT();
+  const [open, setOpen] = useState<boolean>(false);
+
+  const toggleMenu = () => setOpen((v) => !v);
+  const closeMenu = () => setOpen(false);
 
   return (
     <header className={styles.header}>
       <div className={`container ${styles.inner}`}>
-        <NavLink to="/" className={styles.logo} onClick={() => setOpen(false)}>
+        <NavLink to="/" className={styles.logo} onClick={closeMenu}>
           <span className={styles.logoMark}>
             <svg
               className={styles.logoIcon}
@@ -62,7 +74,7 @@ C368,260.418,371.582,264,376,264z M264,120V48h104v72H264z"
               </g>
             </svg>
           </span>
-          <span>Матвеев Мастер</span>
+          <span>Matveev Master</span>
         </NavLink>
 
         <nav className={`${styles.nav} ${open ? styles.navOpen : ""}`}>
@@ -71,25 +83,27 @@ C368,260.418,371.582,264,376,264z M264,120V48h104v72H264z"
               key={item.to}
               to={item.to}
               end={item.end}
-              onClick={() => setOpen(false)}
+              onClick={closeMenu}
               className={({ isActive }) =>
                 isActive ? `${styles.link} ${styles.linkActive}` : styles.link
               }
             >
-              {item.label}
+              {t.nav[item.labelKey]}
             </NavLink>
           ))}
         </nav>
 
-        <a href="tel:+995511305189" className={styles.phone}>
-          +995 511-305-189
+        <LangSwitcher />
+
+        <a href="tel:+79000000000" className={styles.phone}>
+          +7 (900) 000-00-00
         </a>
 
         <button
           type="button"
           className={styles.burger}
-          aria-label="Меню"
-          onClick={() => setOpen((v) => !v)}
+          aria-label="Menu"
+          onClick={toggleMenu}
         >
           <span />
           <span />

@@ -62,6 +62,7 @@
 .link {
   color: $color-text-muted;
   font-weight: 500;
+  white-space: nowrap;
   transition: color .15s;
 
   &:hover { color: $color-text; }
