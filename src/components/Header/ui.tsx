@@ -95,8 +95,8 @@ C368,260.418,371.582,264,376,264z M264,120V48h104v72H264z"
 
         <LangSwitcher />
 
-        <a href="tel:+79000000000" className={styles.phone}>
-          +7 (900) 000-00-00
+        <a href="tel:+995511305189" className={styles.phone}>
+          +995 511-305-189
         </a>
 
         <button

@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
+import { useT } from "@/i18n/context";
 import { WORKS } from "@/data/works";
 import { ImageWithFallback } from "@/components/ImageWithFallback";
 import styles from "./index.module.scss";
 
 export const WorksPage = () => {
+  const { t, lang } = useT();
+
   return (
     <div className={styles.page}>
       <div className={`container ${styles.head}`}>
-        <h1 className={styles.title}>Мои работы</h1>
-        <p className={styles.subtitle}>
-          Объекты, которые я сделал в Батуми и окрестностях. Нажмите на
-          карточку, чтобы посмотреть фотографии и подробности.
-        </p>
+        <h1 className={styles.title}>{t.works.title}</h1>
+        <p className={styles.subtitle}>{t.works.subtitle}</p>
       </div>
 
       <div className={`container ${styles.grid}`}>
@@ -23,13 +23,13 @@ export const WorksPage = () => {
           >
             <ImageWithFallback
               src={work.cover}
-              alt={work.title}
+              alt={work.title[lang]}
               className={styles.cardImage}
             />
             <div className={styles.cardOverlay} />
             <div className={styles.cardContent}>
-              <div className={styles.cardTitle}>{work.title}</div>
-              <div className={styles.cardShort}>{work.short}</div>
+              <div className={styles.cardTitle}>{work.title[lang]}</div>
+              <div className={styles.cardShort}>{work.short[lang]}</div>
             </div>
           </Link>
         ))}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { BlogIndex, BlogPost } from "@/types/blog";
+import type { Lang } from "@/i18n/types";
 
 type State<T> = {
   data: T | null;
@@ -7,7 +8,7 @@ type State<T> = {
   error: string | null;
 };
 
-export const useBlogIndex = (): State<BlogIndex> => {
+export const useBlogIndex = (lang: Lang): State<BlogIndex> => {
   const [state, setState] = useState<State<BlogIndex>>({
     data: null,
     loading: true,
@@ -17,7 +18,7 @@ export const useBlogIndex = (): State<BlogIndex> => {
   useEffect(() => {
     let cancelled = false;
 
-    fetch("/blog/index.json")
+    fetch(`/blog/index.${lang}.json`)
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return r.json();
@@ -37,7 +38,7 @@ export const useBlogIndex = (): State<BlogIndex> => {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [lang]);
 
   return state;
 };
@@ -47,13 +48,13 @@ type PostResult =
   | { status: "not-found" }
   | { status: "error"; message: string };
 
-export const useBlogPost = (slug: string): State<BlogPost> => {
+export const useBlogPost = (slug: string, lang: Lang): State<BlogPost> => {
   const [result, setResult] = useState<PostResult | null>(null);
 
   useEffect(() => {
     let cancelled = false;
 
-    fetch(`/blog/${slug}.json`)
+    fetch(`/blog/${slug}.${lang}.json`)
       .then((r) => {
         if (r.status === 404) {
           if (!cancelled) setResult({ status: "not-found" });
@@ -76,9 +77,8 @@ export const useBlogPost = (slug: string): State<BlogPost> => {
     return () => {
       cancelled = true;
     };
-  }, [slug]);
+  }, [slug, lang]);
 
-  // Вычисляем состояние рендера из `result`, без setState в эффекте
   if (result === null) {
     return { data: null, loading: true, error: null };
   }

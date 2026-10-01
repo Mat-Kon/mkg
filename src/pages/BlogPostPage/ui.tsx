@@ -1,17 +1,14 @@
 import { Link, useParams } from "react-router-dom";
+import { useT } from "@/i18n/context";
 import { useBlogPost } from "@/hooks/useBlog";
 import type { BlogBlock } from "@/types/blog";
+import { CONTACTS } from "@/data/contacts";
 import { ImageWithFallback } from "@/components/ImageWithFallback";
-import { Seo } from "@/components/Seo";
-import { Schema } from "@/components/Schema";
-import { ContactCta } from "@/components/ContactCta";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import styles from "./index.module.scss";
 
-const SITE_URL = "https://matveev-master.ge";
-
-const formatDate = (iso: string): string =>
-  new Date(iso).toLocaleDateString("ru-RU", {
+const formatDate = (iso: string, lang: string): string =>
+  new Date(iso).toLocaleDateString(lang === "ka" ? "ka-GE" : "ru-RU", {
     day: "2-digit",
     month: "long",
     year: "numeric",
@@ -25,14 +22,12 @@ const renderBlock = (block: BlogBlock, i: number) => {
           {block.text}
         </p>
       );
-
     case "heading":
       return (
         <h2 key={i} className={styles.heading}>
           {block.text}
         </h2>
       );
-
     case "list":
       return (
         <ul key={i} className={styles.list}>
@@ -41,7 +36,6 @@ const renderBlock = (block: BlogBlock, i: number) => {
           ))}
         </ul>
       );
-
     case "image":
       return (
         <figure key={i} className={styles.figure}>
@@ -55,7 +49,6 @@ const renderBlock = (block: BlogBlock, i: number) => {
           )}
         </figure>
       );
-
     case "quote":
       return (
         <blockquote key={i} className={styles.quote}>
@@ -70,15 +63,17 @@ const renderBlock = (block: BlogBlock, i: number) => {
 
 type ContentProps = {
   slug: string;
+  lang: "ru" | "ka";
 };
 
-const BlogPostContent = ({ slug }: ContentProps) => {
-  const { data: post, loading, error } = useBlogPost(slug);
+const BlogPostContent = ({ slug, lang }: ContentProps) => {
+  const { t } = useT();
+  const { data: post, loading, error } = useBlogPost(slug, lang);
 
   if (loading) {
     return (
       <div className={`container ${styles.page}`}>
-        <p className={styles.status}>Загрузка…</p>
+        <p className={styles.status}>{t.blogPost.loading}</p>
       </div>
     );
   }
@@ -89,53 +84,26 @@ const BlogPostContent = ({ slug }: ContentProps) => {
 
   return (
     <article className={styles.page}>
-      <Seo
-        title={post.title}
-        description={post.excerpt}
-        canonical={`/blog/${post.slug}`}
-        image={post.cover}
-        type="article"
-        publishedAt={post.date}
-      />
-      <Schema
-        data={{
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          headline: post.title,
-          description: post.excerpt,
-          image: `${SITE_URL}${post.cover}`,
-          datePublished: post.date,
-          dateModified: post.date,
-          author: {
-            "@type": "Person",
-            name: "Матвеев Константин",
-          },
-          publisher: {
-            "@type": "Organization",
-            name: "Матвеев Мастер",
-          },
-          mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
-        }}
-      />
-
       <div className={`container ${styles.breadcrumbs}`}>
         <Link to="/blog" className={styles.backLink}>
-          ← Все статьи
+          {t.blogPost.backLink}
         </Link>
       </div>
 
       <header className={`container ${styles.head}`}>
         <div className={styles.meta}>
-          <span>{formatDate(post.date)}</span>
+          <span>{formatDate(post.date, lang)}</span>
           <span>·</span>
-          <span>{post.readingTime} мин чтения</span>
+          <span>
+            {post.readingTime} {t.blog.readingTime}
+          </span>
         </div>
         <h1 className={styles.title}>{post.title}</h1>
         <p className={styles.lead}>{post.excerpt}</p>
         <div className={styles.tags}>
-          {post.tags.map((t) => (
-            <span key={t} className={styles.tag}>
-              {t}
+          {post.tags.map((tag) => (
+            <span key={tag} className={styles.tag}>
+              {tag}
             </span>
           ))}
         </div>
@@ -154,17 +122,56 @@ const BlogPostContent = ({ slug }: ContentProps) => {
         {post.blocks.map(renderBlock)}
       </div>
 
-      <ContactCta />
+      <div className={`container ${styles.cta}`}>
+        <h2 className={styles.ctaTitle}>{t.contactCta.title}</h2>
+        <p className={styles.ctaText}>{t.contactCta.text}</p>
+        <div className={styles.ctaActions}>
+          <Link to="/calculator" className={styles.primaryBtn}>
+            {t.contactCta.button}
+          </Link>
+        </div>
+        <div className={styles.ctaContacts}>
+          <a
+            href={`https://wa.me/${CONTACTS.whatsapp}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${styles.contactBtn} ${styles.whatsapp}`}
+          >
+            {t.contactCta.whatsapp}
+          </a>
+          <a
+            href={`https://t.me/${CONTACTS.telegram}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${styles.contactBtn} ${styles.telegram}`}
+          >
+            {t.contactCta.telegram}
+          </a>
+          <a
+            href={`mailto:${CONTACTS.email}`}
+            className={`${styles.contactBtn} ${styles.email}`}
+          >
+            {t.contactCta.email}
+          </a>
+          <a
+            href={`tel:${CONTACTS.phone}`}
+            className={`${styles.contactBtn} ${styles.phone}`}
+          >
+            {t.contactCta.phone}
+          </a>
+        </div>
+      </div>
     </article>
   );
 };
 
 export const BlogPostPage = () => {
   const { slug } = useParams<{ slug: string }>();
+  const { lang } = useT();
 
   if (!slug) {
     return <NotFoundPage />;
   }
 
-  return <BlogPostContent key={slug} slug={slug} />;
+  return <BlogPostContent key={`${slug}-${lang}`} slug={slug} lang={lang} />;
 };

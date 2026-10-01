@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useT } from "@/i18n/context";
 import { CONTACTS } from "@/data/contacts";
 import styles from "./index.module.scss";
 
@@ -11,20 +12,22 @@ type Props = {
 };
 
 export const ContactCta = ({
-  title = "Нужен мастер по окнам и балконам?",
-  text = "Работаю в Батуми и рядом. Выезд на замер бесплатный.",
-  buttonLabel = "Открыть калькулятор",
+  title,
+  text,
+  buttonLabel,
   buttonLink = "/calculator",
   className,
 }: Props) => {
+  const { t } = useT();
+
   return (
     <div className={`container ${styles.cta} ${className ?? ""}`}>
-      <h2 className={styles.ctaTitle}>{title}</h2>
-      <p className={styles.ctaText}>{text}</p>
+      <h2 className={styles.ctaTitle}>{title ?? t.contactCta.title}</h2>
+      <p className={styles.ctaText}>{text ?? t.contactCta.text}</p>
 
       <div className={styles.ctaActions}>
         <Link to={buttonLink} className={styles.primaryBtn}>
-          {buttonLabel}
+          {buttonLabel ?? t.contactCta.button}
         </Link>
       </div>
 
@@ -35,7 +38,7 @@ export const ContactCta = ({
           rel="noopener noreferrer"
           className={`${styles.contactBtn} ${styles.whatsapp}`}
         >
-          WhatsApp
+          {t.contactCta.whatsapp}
         </a>
         <a
           href={`https://t.me/${CONTACTS.telegram}`}
@@ -43,19 +46,19 @@ export const ContactCta = ({
           rel="noopener noreferrer"
           className={`${styles.contactBtn} ${styles.telegram}`}
         >
-          Telegram
+          {t.contactCta.telegram}
         </a>
         <a
           href={`mailto:${CONTACTS.email}`}
           className={`${styles.contactBtn} ${styles.email}`}
         >
-          Почта
+          {t.contactCta.email}
         </a>
         <a
           href={`tel:${CONTACTS.phone}`}
           className={`${styles.contactBtn} ${styles.phone}`}
         >
-          Позвонить
+          {t.contactCta.phone}
         </a>
       </div>
     </div>

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { SERVICES, type Service } from "@/data/services";
 import { formatPrice } from "@/utils/format";
+import { useT } from "@/i18n/context";
 import { CONTACTS } from "@/data/contacts";
 import styles from "./index.module.scss";
-import { ContactCta } from "@/components/ContactCta";
 
 type Row = {
   rowId: number;
@@ -28,6 +28,7 @@ const formatDate = (d: Date): string =>
   });
 
 export const CalculatorPage = () => {
+  const { t, lang } = useT();
   const [rows, setRows] = useState<Row[]>([createEmptyRow(1)]);
   const [nextId, setNextId] = useState<number>(2);
 
@@ -72,10 +73,8 @@ export const CalculatorPage = () => {
   return (
     <div className={`container ${styles.page}`}>
       <header className={styles.head}>
-        <h1 className={styles.title}>Калькулятор стоимости работ</h1>
-        <p className={styles.subtitle}>
-          Выберите услуги и укажите объём — я посчитаю стоимость.
-        </p>
+        <h1 className={styles.title}>{t.calculator.title}</h1>
+        <p className={styles.subtitle}>{t.calculator.subtitle}</p>
       </header>
 
       <div className={styles.rows}>
@@ -87,7 +86,9 @@ export const CalculatorPage = () => {
             <div key={row.rowId} className={styles.row}>
               <div className={styles.rowMain}>
                 <label className={styles.selectWrap}>
-                  <span className={styles.label}>Услуга</span>
+                  <span className={styles.label}>
+                    {t.calculator.serviceLabel}
+                  </span>
                   <select
                     className={styles.select}
                     value={row.serviceId ?? ""}
@@ -98,10 +99,10 @@ export const CalculatorPage = () => {
                       });
                     }}
                   >
-                    <option value="">— выберите услугу —</option>
+                    <option value="">{t.calculator.servicePlaceholder}</option>
                     {SERVICES.map((s) => (
                       <option key={s.id} value={s.id}>
-                        {s.name}
+                        {s.name[lang]}
                       </option>
                     ))}
                   </select>
@@ -114,7 +115,9 @@ export const CalculatorPage = () => {
 
                 <div className={styles.controls}>
                   <label className={styles.qtyWrap}>
-                    <span className={styles.label}>Кол-во</span>
+                    <span className={styles.label}>
+                      {t.calculator.qtyLabel}
+                    </span>
                     <input
                       className={styles.input}
                       type="number"
@@ -138,14 +141,18 @@ export const CalculatorPage = () => {
                   </label>
 
                   <div className={styles.unitBox}>
-                    <span className={styles.label}>Ед.</span>
+                    <span className={styles.label}>
+                      {t.calculator.unitLabel}
+                    </span>
                     <span className={styles.unit}>
                       {service ? service.unit : "—"}
                     </span>
                   </div>
 
                   <div className={styles.sumBox}>
-                    <span className={styles.label}>Стоимость</span>
+                    <span className={styles.label}>
+                      {t.calculator.sumLabel}
+                    </span>
                     <span className={styles.sum}>
                       {sum > 0 ? formatPrice(sum) : "—"}
                     </span>
@@ -155,8 +162,8 @@ export const CalculatorPage = () => {
                     type="button"
                     className={styles.remove}
                     onClick={() => removeRow(row.rowId)}
-                    aria-label="Удалить строку"
-                    title="Удалить строку"
+                    aria-label={t.calculator.removeTitle}
+                    title={t.calculator.removeTitle}
                   >
                     ×
                   </button>
@@ -169,7 +176,7 @@ export const CalculatorPage = () => {
 
       <div className={styles.actions}>
         <button type="button" className={styles.addBtn} onClick={addRow}>
-          + Добавить услугу
+          {t.calculator.addButton}
         </button>
         <button
           type="button"
@@ -177,7 +184,7 @@ export const CalculatorPage = () => {
           onClick={clearAll}
           disabled={!hasAnyService && rows.length === 1}
         >
-          Очистить
+          {t.calculator.clearButton}
         </button>
         <button
           type="button"
@@ -185,11 +192,11 @@ export const CalculatorPage = () => {
           onClick={handlePrint}
           disabled={!hasAnyService}
         >
-          Скачать PDF
+          {t.calculator.printButton}
         </button>
       </div>
 
-      {/* Печатная версия */}
+      {/* Печатная версия: скрыта на экране, видна только при печати */}
       <div className={styles.printOnly}>
         <div className={styles.printHeader}>
           <div className={styles.printBrand}>Матвеев Мастер</div>
@@ -200,18 +207,20 @@ export const CalculatorPage = () => {
           </div>
         </div>
 
-        <div className={styles.printTitle}>Смета на работы</div>
-        <div className={styles.printDate}>от {formatDate(new Date())}</div>
+        <div className={styles.printTitle}>{t.calculator.printTitle}</div>
+        <div className={styles.printDate}>
+          {t.calculator.printDate} {formatDate(new Date())}
+        </div>
 
         <table className={styles.printTable}>
           <thead>
             <tr>
               <th>№</th>
-              <th>Услуга</th>
-              <th>Ед.</th>
-              <th>Кол-во</th>
-              <th>Цена</th>
-              <th>Сумма</th>
+              <th>{t.calculator.serviceLabel}</th>
+              <th>{t.calculator.unitLabel}</th>
+              <th>{t.calculator.qtyLabel}</th>
+              <th>{t.calculator.sumLabel}</th>
+              <th>{t.calculator.totalFinal}</th>
             </tr>
           </thead>
           <tbody>
@@ -221,7 +230,7 @@ export const CalculatorPage = () => {
               return (
                 <tr key={row.rowId}>
                   <td>{i + 1}</td>
-                  <td>{service.name}</td>
+                  <td>{service.name[lang]}</td>
                   <td>{service.unit}</td>
                   <td>{row.quantity}</td>
                   <td>{formatPrice(service.price)}</td>
@@ -233,51 +242,82 @@ export const CalculatorPage = () => {
           <tfoot>
             <tr>
               <td colSpan={5} className={styles.printTotalLabel}>
-                Сумма работ
+                {t.calculator.totalWorks}
               </td>
               <td className={styles.printTotalValue}>{formatPrice(total)}</td>
             </tr>
             <tr>
               <td colSpan={5} className={styles.printTotalLabel}>
-                Доставка
+                {t.calculator.totalDelivery}
               </td>
-              <td className={styles.printTotalValue}>по договорённости</td>
+              <td className={styles.printTotalValue}>{t.common.byAgreement}</td>
             </tr>
             <tr>
               <td colSpan={5} className={styles.printTotalLabel}>
-                Подъём материалов
+                {t.calculator.totalLifting}
               </td>
-              <td className={styles.printTotalValue}>по договорённости</td>
+              <td className={styles.printTotalValue}>{t.common.byAgreement}</td>
             </tr>
           </tfoot>
         </table>
 
-        <div className={styles.printFooter}>
-          Смета носит предварительный характер. Точная стоимость определяется
-          после осмотра объекта.
-        </div>
+        <div className={styles.printFooter}>{t.calculator.printFooter}</div>
       </div>
 
       <div className={styles.total}>
         <div className={styles.totalRow}>
-          <span className={styles.totalLabel}>Сумма работ</span>
+          <span className={styles.totalLabel}>{t.calculator.totalWorks}</span>
           <span className={styles.totalValue}>{formatPrice(total)}</span>
         </div>
         <div className={styles.totalRow}>
-          <span className={styles.totalLabel}>Доставка</span>
-          <span className={styles.totalNote}>по договорённости</span>
+          <span className={styles.totalLabel}>
+            {t.calculator.totalDelivery}
+          </span>
+          <span className={styles.totalNote}>{t.common.byAgreement}</span>
         </div>
         <div className={styles.totalRow}>
-          <span className={styles.totalLabel}>Подъём материалов</span>
-          <span className={styles.totalNote}>по договорённости</span>
+          <span className={styles.totalLabel}>{t.calculator.totalLifting}</span>
+          <span className={styles.totalNote}>{t.common.byAgreement}</span>
         </div>
         <div className={`${styles.totalRow} ${styles.totalFinal}`}>
-          <span className={styles.totalLabel}>Итого</span>
+          <span className={styles.totalLabel}>{t.calculator.totalFinal}</span>
           <span className={styles.totalValue}>{formatPrice(total)}</span>
         </div>
       </div>
-      
-      <ContactCta />
+
+      <div className={styles.contactBlock}>
+        <div className={styles.contactTitle}>{t.contactCta.title}</div>
+        <div className={styles.contactGrid}>
+          <a
+            href={`https://wa.me/${CONTACTS.whatsapp}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${styles.contactBtn} ${styles.whatsapp}`}
+          >
+            {t.contactCta.whatsapp}
+          </a>
+          <a
+            href={`https://t.me/${CONTACTS.telegram}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${styles.contactBtn} ${styles.telegram}`}
+          >
+            {t.contactCta.telegram}
+          </a>
+          <a
+            href={`mailto:${CONTACTS.email}`}
+            className={`${styles.contactBtn} ${styles.email}`}
+          >
+            {t.contactCta.email}
+          </a>
+          <a
+            href={`tel:${CONTACTS.phone}`}
+            className={`${styles.contactBtn} ${styles.phone}`}
+          >
+            {t.contactCta.phone}
+          </a>
+        </div>
+      </div>
     </div>
   );
 };

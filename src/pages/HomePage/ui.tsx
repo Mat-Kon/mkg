@@ -1,131 +1,62 @@
 import { Link } from "react-router-dom";
+import { useT } from "@/i18n/context";
 import { CONTACTS } from "@/data/contacts";
 import { WORKS } from "@/data/works";
 import { ImageWithFallback } from "@/components/ImageWithFallback";
 import { ServiceIcon, type ServiceIconName } from "@/components/ServiceIcon";
 import styles from "./index.module.scss";
 
-type Feature = {
-  title: string;
-  text: string;
-};
-
-type Step = {
-  num: string;
-  title: string;
-  text: string;
-};
-
-// type Review = {
-//   name: string;
-//   text: string;
-// };
-
-const FEATURES: Feature[] = [
-  {
-    title: "Личный контроль",
-    text: "Работаю сам, без посредников. Вы всегда знаете, кто и что делает.",
-  },
-  {
-    title: "Опыт с 2014 года",
-    text: "12 лет ремонтирую окна и балконы. Знаю, где что может пойти не так.",
-  },
-  {
-    title: "Честная смета",
-    text: "Просчет в день замера, «фиксируемая» окончательная стоимость.",
-  },
-  {
-    title: "Гарантия на работы",
-    text: "Даю гарантию на все виды работ. Что-то не так — приеду и исправлю.",
-  },
-];
-
-const STEPS: Step[] = [
-  {
-    num: "01",
-    title: "Заявка",
-    text: "Позвоните, напишите в WhatsApp или Telegram — отвечу быстро.",
-  },
-  {
-    num: "02",
-    title: "Замер",
-    text: "Приеду на объект бесплатно, посмотрю, выслушаю, посоветую.",
-  },
-  {
-    num: "03",
-    title: "Смета",
-    text: "Посчитаю стоимость и сроки. Согласуем — начну работу.",
-  },
-  {
-    num: "04",
-    title: "Работы",
-    text: "Делаю аккуратно и в срок. Убираю за собой.",
-  },
-];
-
-// const REVIEWS: Review[] = [
-//   {
-//     name: "Ирина",
-//     text: "Отрегулировал все окна, заменил уплотнители. Быстро, аккуратно, по делу. Рекомендую.",
-//   },
-//   {
-//     name: "Артём",
-//     text: "Отделал балкон под ключ. Всё чётко по смете, никаких накруток. Доволен результатом.",
-//   },
-//   {
-//     name: "Марина",
-//     text: "Помог с остеклением и заменил стеклопакет. Приятно иметь дело с мастером, а не с фирмой.",
-//   },
-// ];
-
 type ServicePreview = {
   icon: ServiceIconName;
-  title: string;
+  labelKey:
+    | "osteklenie"
+    | "remont"
+    | "steklopaket"
+    | "otdelka"
+    | "setka"
+    | "montazh";
 };
 
 const SERVICES_PREVIEW: ServicePreview[] = [
-  { icon: "osteklenie", title: "Остекление балконов и лоджий" },
-  { icon: "remont", title: "Ремонт и регулировка окон ПВХ" },
-  { icon: "steklopaket", title: "Замена стеклопакетов и фурнитуры" },
-  { icon: "otdelka", title: "Отделка балконов под ключ" },
-  { icon: "setka", title: "Москитные сетки и отливы" },
-  { icon: "montazh", title: "Монтаж подоконников и плинтусов" },
+  { icon: "osteklenie", labelKey: "osteklenie" },
+  { icon: "remont", labelKey: "remont" },
+  { icon: "steklopaket", labelKey: "steklopaket" },
+  { icon: "otdelka", labelKey: "otdelka" },
+  { icon: "setka", labelKey: "setka" },
+  { icon: "montazh", labelKey: "montazh" },
 ];
 
+const FEATURE_KEYS = ["control", "experience", "honest", "warranty"] as const;
+const STEP_KEYS = ["request", "measure", "estimate", "work"] as const;
+
 export const HomePage = () => {
+  const { t, lang } = useT();
+
   return (
     <>
       {/* HERO */}
       <section className={styles.hero}>
         <div className={`container ${styles.heroInner}`}>
           <div className={styles.heroContent}>
-            <div className={styles.heroBadge}>Частный мастер · Батуми</div>
-            <h1 className={styles.heroTitle}>
-              Ремонт и обслуживание окон и балконов
-            </h1>
-            <p className={styles.heroText}>
-              Приеду, посмотрю, посчитаю. Сделаю аккуратно и в срок. Работаю
-              сам, без посредников — вы платите только за работу.
-            </p>
+            <div className={styles.heroBadge}>{t.home.hero.badge}</div>
+            <h1 className={styles.heroTitle}>{t.home.hero.title}</h1>
+            <p className={styles.heroText}>{t.home.hero.text}</p>
             <div className={styles.heroActions}>
               <Link to="/calculator" className={styles.primaryBtn}>
-                Рассчитать стоимость
+                {t.home.hero.ctaPrimary}
               </Link>
               <a href={`tel:${CONTACTS.phone}`} className={styles.secondaryBtn}>
-                Позвонить
+                {t.home.hero.ctaSecondary}
               </a>
             </div>
           </div>
           <div className={styles.heroCard}>
-            <div className={styles.heroCardTitle}>Бесплатный выезд</div>
-            <p className={styles.heroCardText}>
-              Приеду на замер, посмотрю объём и назову точную цену. Без
-              обязательств.
-            </p>
+            <div className={styles.heroCardTitle}>{t.home.hero.cardTitle}</div>
+            <p className={styles.heroCardText}>{t.home.hero.cardText}</p>
             <ul className={styles.heroCardList}>
-              <li>Замер и смета — бесплатно</li>
-              <li>Работаю с 2014 года</li>
-              <li>Гарантия на все работы</li>
+              <li>{t.home.hero.cardList.measure}</li>
+              <li>{t.home.hero.cardList.since}</li>
+              <li>{t.home.hero.cardList.warranty}</li>
             </ul>
           </div>
         </div>
@@ -136,19 +67,19 @@ export const HomePage = () => {
         <div className={`container ${styles.trustGrid}`}>
           <div className={styles.trustItem}>
             <div className={styles.trustValue}>10+</div>
-            <div className={styles.trustLabel}>лет опыта</div>
+            <div className={styles.trustLabel}>{t.home.trust.years}</div>
           </div>
           <div className={styles.trustItem}>
             <div className={styles.trustValue}>0 ₾</div>
-            <div className={styles.trustLabel}>за выезд и замер</div>
+            <div className={styles.trustLabel}>{t.home.trust.freeVisit}</div>
           </div>
           <div className={styles.trustItem}>
             <div className={styles.trustValue}>1 год</div>
-            <div className={styles.trustLabel}>гарантия на работы</div>
+            <div className={styles.trustLabel}>{t.home.trust.warranty}</div>
           </div>
           <div className={styles.trustItem}>
             <div className={styles.trustValue}>500+</div>
-            <div className={styles.trustLabel}>выполненных объектов</div>
+            <div className={styles.trustLabel}>{t.home.trust.worksDone}</div>
           </div>
         </div>
       </section>
@@ -157,25 +88,24 @@ export const HomePage = () => {
       <section className={styles.section}>
         <div className="container">
           <div className={styles.sectionHead}>
-            <h2 className={styles.sectionTitle}>Чем я могу помочь</h2>
-            <p className={styles.sectionSubtitle}>
-              Ремонт, обслуживание и отделка окон и балконов — от мелких работ
-              до проектов под ключ.
-            </p>
+            <h2 className={styles.sectionTitle}>{t.home.services.title}</h2>
+            <p className={styles.sectionSubtitle}>{t.home.services.subtitle}</p>
           </div>
           <div className={styles.servicesGrid}>
             {SERVICES_PREVIEW.map((item) => (
-              <div key={item.title} className={styles.serviceCard}>
+              <div key={item.labelKey} className={styles.serviceCard}>
                 <div className={styles.serviceIcon}>
                   <ServiceIcon name={item.icon} size={26} />
                 </div>
-                <div className={styles.serviceTitle}>{item.title}</div>
+                <div className={styles.serviceTitle}>
+                  {t.home.services.items[item.labelKey]}
+                </div>
               </div>
             ))}
           </div>
           <div className={styles.sectionCta}>
             <Link to="/services" className={styles.textLink}>
-              Все услуги и цены →
+              {t.home.services.allServices}
             </Link>
           </div>
         </div>
@@ -185,15 +115,18 @@ export const HomePage = () => {
       <section className={`${styles.section} ${styles.sectionAlt}`}>
         <div className="container">
           <div className={styles.sectionHead}>
-            <h2 className={styles.sectionTitle}>Почему меня выбирают</h2>
+            <h2 className={styles.sectionTitle}>{t.home.features.title}</h2>
           </div>
           <div className={styles.featuresGrid}>
-            {FEATURES.map((f) => (
-              <div key={f.title} className={styles.featureCard}>
-                <div className={styles.featureTitle}>{f.title}</div>
-                <p className={styles.featureText}>{f.text}</p>
-              </div>
-            ))}
+            {FEATURE_KEYS.map((key) => {
+              const item = t.home.features.items[key];
+              return (
+                <div key={key} className={styles.featureCard}>
+                  <div className={styles.featureTitle}>{item.title}</div>
+                  <p className={styles.featureText}>{item.text}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -202,45 +135,30 @@ export const HomePage = () => {
       <section className={styles.section}>
         <div className="container">
           <div className={styles.sectionHead}>
-            <h2 className={styles.sectionTitle}>Как я работаю</h2>
+            <h2 className={styles.sectionTitle}>{t.home.steps.title}</h2>
           </div>
           <div className={styles.stepsGrid}>
-            {STEPS.map((s) => (
-              <div key={s.num} className={styles.stepCard}>
-                <div className={styles.stepNum}>{s.num}</div>
-                <div className={styles.stepTitle}>{s.title}</div>
-                <p className={styles.stepText}>{s.text}</p>
-              </div>
-            ))}
+            {STEP_KEYS.map((key, i) => {
+              const item = t.home.steps.items[key];
+              const num = String(i + 1).padStart(2, "0");
+              return (
+                <div key={key} className={styles.stepCard}>
+                  <div className={styles.stepNum}>{num}</div>
+                  <div className={styles.stepTitle}>{item.title}</div>
+                  <p className={styles.stepText}>{item.text}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
-
-      {/* REVIEWS */}
-      {/* <section className={`${styles.section} ${styles.sectionAlt}`}>
-        <div className="container">
-          <div className={styles.sectionHead}>
-            <h2 className={styles.sectionTitle}>Отзывы клиентов</h2>
-          </div>
-          <div className={styles.reviewsGrid}>
-            {REVIEWS.map((r) => (
-              <div key={r.name} className={styles.reviewCard}>
-                <p className={styles.reviewText}>«{r.text}»</p>
-                <div className={styles.reviewName}>— {r.name}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
 
       {/* WORKS PREVIEW */}
       <section className={`${styles.section} ${styles.sectionAlt}`}>
         <div className="container">
           <div className={styles.sectionHead}>
-            <h2 className={styles.sectionTitle}>Мои работы</h2>
-            <p className={styles.sectionSubtitle}>
-              Несколько объектов, которые я сделал.
-            </p>
+            <h2 className={styles.sectionTitle}>{t.home.works.title}</h2>
+            <p className={styles.sectionSubtitle}>{t.home.works.subtitle}</p>
           </div>
 
           <div className={styles.worksGrid}>
@@ -252,13 +170,13 @@ export const HomePage = () => {
               >
                 <ImageWithFallback
                   src={work.cover}
-                  alt={work.title}
+                  alt={work.title[lang]}
                   className={styles.workImage}
                 />
                 <div className={styles.workOverlay} />
                 <div className={styles.workContent}>
-                  <div className={styles.workTitle}>{work.title}</div>
-                  <div className={styles.workShort}>{work.short}</div>
+                  <div className={styles.workTitle}>{work.title[lang]}</div>
+                  <div className={styles.workShort}>{work.short[lang]}</div>
                 </div>
               </Link>
             ))}
@@ -266,7 +184,7 @@ export const HomePage = () => {
 
           <div className={styles.sectionCta}>
             <Link to="/works" className={styles.textLink}>
-              Все работы →
+              {t.home.works.allWorks}
             </Link>
           </div>
         </div>
@@ -275,15 +193,11 @@ export const HomePage = () => {
       {/* FINAL CTA */}
       <section className={styles.cta}>
         <div className={`container ${styles.ctaInner}`}>
-          <h2 className={styles.ctaTitle}>
-            Узнайте стоимость работ за 1 минуту
-          </h2>
-          <p className={styles.ctaText}>
-            Выберите нужные услуги и укажите объём — покажу цену сразу.
-          </p>
+          <h2 className={styles.ctaTitle}>{t.home.finalCta.title}</h2>
+          <p className={styles.ctaText}>{t.home.finalCta.text}</p>
           <div className={styles.ctaActions}>
             <Link to="/calculator" className={styles.primaryBtn}>
-              Открыть калькулятор
+              {t.home.finalCta.button}
             </Link>
           </div>
 
@@ -294,7 +208,7 @@ export const HomePage = () => {
               rel="noopener noreferrer"
               className={`${styles.contactBtn} ${styles.whatsapp}`}
             >
-              WhatsApp
+              {t.home.finalCta.whatsapp}
             </a>
             <a
               href={`https://t.me/${CONTACTS.telegram}`}
@@ -302,19 +216,19 @@ export const HomePage = () => {
               rel="noopener noreferrer"
               className={`${styles.contactBtn} ${styles.telegram}`}
             >
-              Telegram
+              {t.home.finalCta.telegram}
             </a>
             <a
               href={`mailto:${CONTACTS.email}`}
               className={`${styles.contactBtn} ${styles.email}`}
             >
-              Почта
+              {t.home.finalCta.email}
             </a>
             <a
               href={`tel:${CONTACTS.phone}`}
               className={`${styles.contactBtn} ${styles.phone}`}
             >
-              Позвонить
+              {t.home.finalCta.phone}
             </a>
           </div>
         </div>

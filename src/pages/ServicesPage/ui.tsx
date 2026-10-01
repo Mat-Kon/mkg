@@ -1,12 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  SERVICES,
-  CATEGORY_LABELS,
-  type Service,
-  type ServiceCategory,
-} from "@/data/services";
+import { SERVICES, type Service, type ServiceCategory } from "@/data/services";
 import { formatPrice } from "@/utils/format";
+import { useT } from "@/i18n/context";
 import { CONTACTS } from "@/data/contacts";
 import { CategoryIcon } from "@/components/CategoryIcon";
 import styles from "./index.module.scss";
@@ -36,6 +32,7 @@ const groupByCategory = (): Record<ServiceCategory, Service[]> => {
 };
 
 export const ServicesPage = () => {
+  const { t, lang } = useT();
   const grouped = groupByCategory();
 
   const [open, setOpen] = useState<Record<ServiceCategory, boolean>>({
@@ -53,15 +50,8 @@ export const ServicesPage = () => {
   return (
     <div className={styles.page}>
       <div className={`container ${styles.head}`}>
-        <h1 className={styles.title}>Услуги и цены</h1>
-        <p className={styles.subtitle}></p>
-        Ниже — цены на работы для ознакомления.
-        <p className={styles.subtitle}>
-          Материалы считаются отдельно и оплачиваются по чекам.
-        </p>
-        <p className={styles.subtitle}>
-          Доставка и подъём материалов — по договорённости.
-        </p>
+        <h1 className={styles.title}>{t.services.title}</h1>
+        <p className={styles.subtitle}>{t.services.subtitle}</p>
       </div>
 
       <div className={`container ${styles.categories}`}>
@@ -82,7 +72,7 @@ export const ServicesPage = () => {
                   <CategoryIcon category={cat} />
                 </span>
                 <span className={styles.categoryTitle}>
-                  {CATEGORY_LABELS[cat]}
+                  {t.services.categories[cat]}
                 </span>
                 <span className={styles.categoryCount}>{items.length}</span>
                 <span
@@ -99,7 +89,7 @@ export const ServicesPage = () => {
                 <div className={styles.list}>
                   {items.map((s) => (
                     <div key={s.id} className={styles.row}>
-                      <div className={styles.rowName}>{s.name}</div>
+                      <div className={styles.rowName}>{s.name[lang]}</div>
                       <div className={styles.rowUnit}>{s.unit}</div>
                       <div className={styles.rowPrice}>
                         {formatPrice(s.price)}
@@ -113,19 +103,16 @@ export const ServicesPage = () => {
         })}
 
         <div className={styles.note}>
-          <strong>Важно:</strong> указанные цены — за работу. Стоимость
-          материалов, доставки и подъёма на этаж рассчитывается отдельно и
-          зависит от объекта.
+          <strong>{t.services.note.split(":")[0]}:</strong>
+          {t.services.note.split(":").slice(1).join(":")}
         </div>
 
         <div className={styles.cta}>
-          <h2 className={styles.ctaTitle}>Хотите узнать точную стоимость?</h2>
-          <p className={styles.ctaText}>
-            Соберите нужные услуги в калькуляторе — покажу цену сразу.
-          </p>
+          <h2 className={styles.ctaTitle}>{t.services.ctaTitle}</h2>
+          <p className={styles.ctaText}>{t.services.ctaText}</p>
           <div className={styles.ctaActions}>
             <Link to="/calculator" className={styles.primaryBtn}>
-              Открыть калькулятор
+              {t.services.ctaButton}
             </Link>
           </div>
 
@@ -136,7 +123,7 @@ export const ServicesPage = () => {
               rel="noopener noreferrer"
               className={`${styles.contactBtn} ${styles.whatsapp}`}
             >
-              WhatsApp
+              {t.contactCta.whatsapp}
             </a>
             <a
               href={`https://t.me/${CONTACTS.telegram}`}
@@ -144,19 +131,19 @@ export const ServicesPage = () => {
               rel="noopener noreferrer"
               className={`${styles.contactBtn} ${styles.telegram}`}
             >
-              Telegram
+              {t.contactCta.telegram}
             </a>
             <a
               href={`mailto:${CONTACTS.email}`}
               className={`${styles.contactBtn} ${styles.email}`}
             >
-              Почта
+              {t.contactCta.email}
             </a>
             <a
               href={`tel:${CONTACTS.phone}`}
               className={`${styles.contactBtn} ${styles.phone}`}
             >
-              Позвонить
+              {t.contactCta.phone}
             </a>
           </div>
         </div>

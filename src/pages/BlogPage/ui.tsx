@@ -1,38 +1,30 @@
 import { Link } from "react-router-dom";
+import { useT } from "@/i18n/context";
 import { useBlogIndex } from "@/hooks/useBlog";
 import { ImageWithFallback } from "@/components/ImageWithFallback";
-import { Seo } from "@/components/Seo";
 import styles from "./index.module.scss";
 
-const formatDate = (iso: string): string =>
-  new Date(iso).toLocaleDateString("ru-RU", {
+const formatDate = (iso: string, lang: string): string =>
+  new Date(iso).toLocaleDateString(lang === "ka" ? "ka-GE" : "ru-RU", {
     day: "2-digit",
     month: "long",
     year: "numeric",
   });
 
 export const BlogPage = () => {
-  const { data, loading, error } = useBlogIndex();
+  const { t, lang } = useT();
+  const { data, loading, error } = useBlogIndex(lang);
 
   return (
     <div className={styles.page}>
-      <Seo
-        title="Блог о ремонте окон и балконов"
-        description="Статьи о ремонте окон ПВХ, остеклении и отделке балконов в Батуми. Опыт мастера, разбор ошибок, практические советы."
-        canonical="/blog"
-      />
-
       <div className={`container ${styles.head}`}>
-        <h1 className={styles.title}>Блог</h1>
-        <p className={styles.subtitle}>
-          Пишу о ремонте и обслуживании окон и балконов. Делюсь опытом, разбираю
-          частые ошибки и подсказываю, как сделать лучше.
-        </p>
+        <h1 className={styles.title}>{t.blog.title}</h1>
+        <p className={styles.subtitle}>{t.blog.subtitle}</p>
       </div>
 
       <div className={`container ${styles.grid}`}>
-        {loading && <p className={styles.status}>Загрузка…</p>}
-        {error && <p className={styles.status}>Не удалось загрузить статьи.</p>}
+        {loading && <p className={styles.status}>{t.blog.loading}</p>}
+        {error && <p className={styles.status}>{t.blog.errorLoad}</p>}
 
         {data?.posts.map((post) => (
           <Link
@@ -49,16 +41,18 @@ export const BlogPage = () => {
             </div>
             <div className={styles.cardBody}>
               <div className={styles.cardMeta}>
-                <span>{formatDate(post.date)}</span>
+                <span>{formatDate(post.date, lang)}</span>
                 <span>·</span>
-                <span>{post.readingTime} мин чтения</span>
+                <span>
+                  {post.readingTime} {t.blog.readingTime}
+                </span>
               </div>
               <h2 className={styles.cardTitle}>{post.title}</h2>
               <p className={styles.cardExcerpt}>{post.excerpt}</p>
               <div className={styles.cardTags}>
-                {post.tags.map((t) => (
-                  <span key={t} className={styles.tag}>
-                    {t}
+                {post.tags.map((tag) => (
+                  <span key={tag} className={styles.tag}>
+                    {tag}
                   </span>
                 ))}
               </div>
