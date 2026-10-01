@@ -1,5 +1,6 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "@/components/Layout";
+import { LangSync } from "@/i18n/LangSync";
 import { HomePage } from "@/pages/HomePage";
 import { AboutPage } from "@/pages/AboutPage";
 import { ServicesPage } from "@/pages/ServicesPage";
@@ -14,7 +15,19 @@ import { NotFoundPage } from "@/pages/NotFoundPage";
 export const App = () => {
   return (
     <Routes>
-      <Route element={<Layout />}>
+      {/* Редирект с корня на язык по умолчанию */}
+      <Route path="/" element={<Navigate to="/ru" replace />} />
+
+      {/* Роутинг с языковым префиксом */}
+      <Route
+        path=":lang"
+        element={
+          <>
+            <LangSync />
+            <Layout />
+          </>
+        }
+      >
         <Route index element={<HomePage />} />
         <Route path="about" element={<AboutPage />} />
         <Route path="services" element={<ServicesPage />} />
@@ -26,6 +39,9 @@ export const App = () => {
         <Route path="contacts" element={<ContactsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
+
+      {/* Любой другой путь (без lang) — тоже редирект на /ru */}
+      <Route path="*" element={<Navigate to="/ru" replace />} />
     </Routes>
   );
 };

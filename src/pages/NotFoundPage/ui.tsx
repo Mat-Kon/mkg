@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useT } from "@/i18n/context";
+import { useLocalizedPath } from "@/i18n/useLocalizedPath";
 import type { NavKey } from "@/i18n/types";
 import styles from "./index.module.scss";
 
@@ -15,6 +16,7 @@ const LINKS: { to: string; labelKey: NavKey }[] = [
 
 export const NotFoundPage = () => {
   const { t } = useT();
+  const lp = useLocalizedPath();
 
   return (
     <div className={styles.page}>
@@ -24,17 +26,17 @@ export const NotFoundPage = () => {
         <p className={styles.text}>{t.notFound.text}</p>
 
         <div className={styles.actions}>
-          <Link to="/" className={styles.primaryBtn}>
+          <Link to={lp("/")} className={styles.primaryBtn}>
             {t.notFound.primary}
           </Link>
-          <Link to="/calculator" className={styles.secondaryBtn}>
+          <Link to={lp("/calculator")} className={styles.secondaryBtn}>
             {t.notFound.secondary}
           </Link>
         </div>
 
         <nav className={styles.links}>
           {LINKS.map((l) => (
-            <Link key={l.to} to={l.to} className={styles.link}>
+            <Link key={l.to} to={lp(l.to)} className={styles.link}>
               {t.nav[l.labelKey]}
             </Link>
           ))}

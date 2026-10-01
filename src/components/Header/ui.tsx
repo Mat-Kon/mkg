@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useT } from "@/i18n/context";
+import { useLocalizedPath } from "@/i18n/useLocalizedPath";
 import { LangSwitcher } from "@/components/LangSwitcher";
 import styles from "./index.module.scss";
 
@@ -22,6 +23,7 @@ const NAV: NavItem[] = [
 
 export const Header = () => {
   const { t } = useT();
+  const lp = useLocalizedPath();
   const [open, setOpen] = useState<boolean>(false);
 
   const toggleMenu = () => setOpen((v) => !v);
@@ -30,7 +32,7 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={`container ${styles.inner}`}>
-        <NavLink to="/" className={styles.logo} onClick={closeMenu}>
+        <NavLink to={lp("/")} className={styles.logo} onClick={closeMenu}>
           <span className={styles.logoMark}>
             <svg
               className={styles.logoIcon}
@@ -81,7 +83,7 @@ C368,260.418,371.582,264,376,264z M264,120V48h104v72H264z"
           {NAV.map((item) => (
             <NavLink
               key={item.to}
-              to={item.to}
+              to={lp(item.to)}
               end={item.end}
               onClick={closeMenu}
               className={({ isActive }) =>

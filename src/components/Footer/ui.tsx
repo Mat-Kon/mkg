@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useT } from "@/i18n/context";
+import { useLocalizedPath } from "@/i18n/useLocalizedPath";
 import type { NavKey } from "@/i18n/types";
 import { CONTACTS } from "@/data/contacts";
 import styles from "./index.module.scss";
@@ -20,6 +21,7 @@ const NAV_LINKS: FooterLink[] = [
 
 export const Footer = () => {
   const { t } = useT();
+  const lp = useLocalizedPath();
   const year = new Date().getFullYear();
 
   return (
@@ -36,7 +38,7 @@ export const Footer = () => {
           <div className={styles.title}>{t.footer.navTitle}</div>
           <nav className={styles.links}>
             {NAV_LINKS.map((item) => (
-              <Link key={item.to} to={item.to} className={styles.link}>
+              <Link key={item.to} to={lp(item.to)} className={styles.link}>
                 {t.nav[item.labelKey]}
               </Link>
             ))}

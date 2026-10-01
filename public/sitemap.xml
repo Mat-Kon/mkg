@@ -1,82 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+  <!-- Главная -->
   <url>
-    <loc>https://matveev-master.ge/</loc>
+    <loc>https://matveev-master.ge/ru</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://matveev-master.ge/ru" />
+    <xhtml:link rel="alternate" hreflang="ka" href="https://matveev-master.ge/ka" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matveev-master.ge/ru" />
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
   </url>
+
+  <!-- Услуги -->
   <url>
-    <loc>https://matveev-master.ge/services</loc>
+    <loc>https://matveev-master.ge/ru/services</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://matveev-master.ge/ru/services" />
+    <xhtml:link rel="alternate" hreflang="ka" href="https://matveev-master.ge/ka/services" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matveev-master.ge/ru/services" />
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
+
+  <!-- Работы (список) -->
   <url>
-    <loc>https://matveev-master.ge/works</loc>
+    <loc>https://matveev-master.ge/ru/works</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://matveev-master.ge/ru/works" />
+    <xhtml:link rel="alternate" hreflang="ka" href="https://matveev-master.ge/ka/works" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matveev-master.ge/ru/works" />
     <priority>0.9</priority>
     <changefreq>weekly</changefreq>
   </url>
+
+  <!-- Блог (список) -->
   <url>
-    <loc>https://matveev-master.ge/blog</loc>
+    <loc>https://matveev-master.ge/ru/blog</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://matveev-master.ge/ru/blog" />
+    <xhtml:link rel="alternate" hreflang="ka" href="https://matveev-master.ge/ka/blog" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matveev-master.ge/ru/blog" />
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
+
+  <!-- Обо мне -->
   <url>
-    <loc>https://matveev-master.ge/about</loc>
+    <loc>https://matveev-master.ge/ru/about</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://matveev-master.ge/ru/about" />
+    <xhtml:link rel="alternate" hreflang="ka" href="https://matveev-master.ge/ka/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matveev-master.ge/ru/about" />
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
+
+  <!-- Контакты -->
   <url>
-    <loc>https://matveev-master.ge/contacts</loc>
+    <loc>https://matveev-master.ge/ru/contacts</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://matveev-master.ge/ru/contacts" />
+    <xhtml:link rel="alternate" hreflang="ka" href="https://matveev-master.ge/ka/contacts" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matveev-master.ge/ru/contacts" />
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <!-- Работы -->
   <url>
-    <loc>https://matveev-master.ge/works/balkon-pod-klyuch</loc>
+    <loc>https://matveev-master.ge/ru/works/balkon-pod-klyuch</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://matveev-master.ge/ru/works/balkon-pod-klyuch" />
+    <xhtml:link rel="alternate" hreflang="ka" href="https://matveev-master.ge/ka/works/balkon-pod-klyuch" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matveev-master.ge/ru/works/balkon-pod-klyuch" />
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://matveev-master.ge/works/otdelka-pod-kluch-seraya</loc>
+    <loc>https://matveev-master.ge/ru/works/otdelka-pod-kluch-seraya</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://matveev-master.ge/ru/works/otdelka-pod-kluch-seraya" />
+    <xhtml:link rel="alternate" hreflang="ka" href="https://matveev-master.ge/ka/works/otdelka-pod-kluch-seraya" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matveev-master.ge/ru/works/otdelka-pod-kluch-seraya" />
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://matveev-master.ge/works/osteklenie-lodzhii</loc>
+    <loc>https://matveev-master.ge/ru/works/osteklenie-lodzhii</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://matveev-master.ge/ru/works/osteklenie-lodzhii" />
+    <xhtml:link rel="alternate" hreflang="ka" href="https://matveev-master.ge/ka/works/osteklenie-lodzhii" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matveev-master.ge/ru/works/osteklenie-lodzhii" />
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://matveev-master.ge/works/balkon-pod-klyuch-fistashka</loc>
+    <loc>https://matveev-master.ge/ru/works/balkon-pod-klyuch-fistashka</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://matveev-master.ge/ru/works/balkon-pod-klyuch-fistashka" />
+    <xhtml:link rel="alternate" hreflang="ka" href="https://matveev-master.ge/ka/works/balkon-pod-klyuch-fistashka" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matveev-master.ge/ru/works/balkon-pod-klyuch-fistashka" />
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://matveev-master.ge/works/otdelks-balkona-pvh-mramor</loc>
+    <loc>https://matveev-master.ge/ru/works/otdelks-balkona-pvh-mramor</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://matveev-master.ge/ru/works/otdelks-balkona-pvh-mramor" />
+    <xhtml:link rel="alternate" hreflang="ka" href="https://matveev-master.ge/ka/works/otdelks-balkona-pvh-mramor" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matveev-master.ge/ru/works/otdelks-balkona-pvh-mramor" />
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://matveev-master.ge/works/balkon-pod-klyuch-otdelka-pvh</loc>
+    <loc>https://matveev-master.ge/ru/works/balkon-pod-klyuch-otdelka-pvh</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://matveev-master.ge/ru/works/balkon-pod-klyuch-otdelka-pvh" />
+    <xhtml:link rel="alternate" hreflang="ka" href="https://matveev-master.ge/ka/works/balkon-pod-klyuch-otdelka-pvh" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matveev-master.ge/ru/works/balkon-pod-klyuch-otdelka-pvh" />
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
 
   <!-- Блог -->
-<url>
-  <loc>https://matveev-master.ge/blog/otdelka-balkona-vnutri</loc>
-  <priority>0.6</priority>
-  <changefreq>monthly</changefreq>
-</url>
-<url>
-  <loc>https://matveev-master.ge/blog/demontazh-balkona</loc>
-  <priority>0.6</priority>
-  <changefreq>monthly</changefreq>
-</url>
-<url>
-  <loc>https://matveev-master.ge/blog/pochemu-pvh-paneli-luchshe</loc>
-  <priority>0.6</priority>
-  <changefreq>monthly</changefreq>
-</url>
+  <url>
+    <loc>https://matveev-master.ge/ru/blog/otdelka-balkona-vnutri</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://matveev-master.ge/ru/blog/otdelka-balkona-vnutri" />
+    <xhtml:link rel="alternate" hreflang="ka" href="https://matveev-master.ge/ka/blog/otdelka-balkona-vnutri" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matveev-master.ge/ru/blog/otdelka-balkona-vnutri" />
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://matveev-master.ge/ru/blog/demontazh-balkona</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://matveev-master.ge/ru/blog/demontazh-balkona" />
+    <xhtml:link rel="alternate" hreflang="ka" href="https://matveev-master.ge/ka/blog/demontazh-balkona" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matveev-master.ge/ru/blog/demontazh-balkona" />
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://matveev-master.ge/ru/blog/pochemu-pvh-paneli-luchshe</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://matveev-master.ge/ru/blog/pochemu-pvh-paneli-luchshe" />
+    <xhtml:link rel="alternate" hreflang="ka" href="https://matveev-master.ge/ka/blog/pochemu-pvh-paneli-luchshe" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matveev-master.ge/ru/blog/pochemu-pvh-paneli-luchshe" />
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>

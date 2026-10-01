@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { useT } from "@/i18n/context";
+import { useLocalizedPath } from "@/i18n/useLocalizedPath";
 import { CONTACTS } from "@/data/contacts";
 import { WORKS } from "@/data/works";
 import { ImageWithFallback } from "@/components/ImageWithFallback";
 import { ServiceIcon, type ServiceIconName } from "@/components/ServiceIcon";
 import styles from "./index.module.scss";
+import { Seo } from "@/components/Seo";
 
 type ServicePreview = {
   icon: ServiceIconName;
@@ -31,9 +33,11 @@ const STEP_KEYS = ["request", "measure", "estimate", "work"] as const;
 
 export const HomePage = () => {
   const { t, lang } = useT();
+  const lp = useLocalizedPath();
 
   return (
     <>
+      <Seo title={t.home.meta.title} description={t.home.meta.description} />
       {/* HERO */}
       <section className={styles.hero}>
         <div className={`container ${styles.heroInner}`}>
@@ -42,7 +46,7 @@ export const HomePage = () => {
             <h1 className={styles.heroTitle}>{t.home.hero.title}</h1>
             <p className={styles.heroText}>{t.home.hero.text}</p>
             <div className={styles.heroActions}>
-              <Link to="/calculator" className={styles.primaryBtn}>
+              <Link to={lp("/calculator")} className={styles.primaryBtn}>
                 {t.home.hero.ctaPrimary}
               </Link>
               <a href={`tel:${CONTACTS.phone}`} className={styles.secondaryBtn}>
@@ -104,7 +108,7 @@ export const HomePage = () => {
             ))}
           </div>
           <div className={styles.sectionCta}>
-            <Link to="/services" className={styles.textLink}>
+            <Link to={lp("/services")} className={styles.textLink}>
               {t.home.services.allServices}
             </Link>
           </div>
@@ -165,7 +169,7 @@ export const HomePage = () => {
             {WORKS.slice(0, 3).map((work) => (
               <Link
                 key={work.slug}
-                to={`/works/${work.slug}`}
+                to={lp(`/works/${work.slug}`)}
                 className={styles.workCard}
               >
                 <ImageWithFallback
@@ -183,7 +187,7 @@ export const HomePage = () => {
           </div>
 
           <div className={styles.sectionCta}>
-            <Link to="/works" className={styles.textLink}>
+            <Link to={lp("/works")} className={styles.textLink}>
               {t.home.works.allWorks}
             </Link>
           </div>
@@ -196,7 +200,7 @@ export const HomePage = () => {
           <h2 className={styles.ctaTitle}>{t.home.finalCta.title}</h2>
           <p className={styles.ctaText}>{t.home.finalCta.text}</p>
           <div className={styles.ctaActions}>
-            <Link to="/calculator" className={styles.primaryBtn}>
+            <Link to={lp("/calculator")} className={styles.primaryBtn}>
               {t.home.finalCta.button}
             </Link>
           </div>
