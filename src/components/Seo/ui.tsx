@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { useT } from "@/i18n/context";
+
+type JsonLd = Record<string, unknown>;
 
 type Props = {
   title: string;
@@ -9,12 +10,19 @@ type Props = {
   image?: string;
   type?: "website" | "article";
   publishedAt?: string;
+  noindex?: boolean;
+  jsonLd?: JsonLd | JsonLd[];
 };
 
-const SITE_NAME = "Matveev Master";
-const SITE_URL = "https://matveev-master.ge";
+const SITE_NAME = "Матвеев Мастер";
+const SITE_URL = "https://mkbalkon.ru"; 
+const DEFAULT_IMAGE = "/images/og-default.jpg";
 
-const setMeta = (attr: "name" | "property", key: string, content: string) => {
+const upsertMeta = (
+  attr: "name" | "property",
+  key: string,
+  content: string,
+) => {
   let el = document.head.querySelector<HTMLMetaElement>(
     `meta[${attr}="${key}"]`,
   );
@@ -26,20 +34,43 @@ const setMeta = (attr: "name" | "property", key: string, content: string) => {
   el.setAttribute("content", content);
 };
 
-const setLink = (rel: string, href: string, hreflang?: string) => {
-  // Ищем <link> с конкретным rel и (если есть) hreflang
-  const selector = hreflang
-    ? `link[rel="${rel}"][hreflang="${hreflang}"]`
-    : `link[rel="${rel}"]:not([hreflang])`;
+const removeMeta = (attr: "name" | "property", key: string) => {
+  const el = document.head.querySelector<HTMLMetaElement>(
+    `meta[${attr}="${key}"]`,
+  );
+  if (el) el.remove();
+};
 
-  let el = document.head.querySelector<HTMLLinkElement>(selector);
+const upsertLink = (rel: string, href: string) => {
+  let el = document.head.querySelector<HTMLLinkElement>(
+    `link[rel="${rel}"]:not([hreflang])`,
+  );
   if (!el) {
     el = document.createElement("link");
     el.setAttribute("rel", rel);
-    if (hreflang) el.setAttribute("hreflang", hreflang);
     document.head.appendChild(el);
   }
   el.setAttribute("href", href);
+};
+
+const JSON_LD_ID = "seo-jsonld";
+
+const setJsonLd = (data: JsonLd | JsonLd[] | undefined) => {
+  const existing = document.getElementById(JSON_LD_ID);
+  if (existing) existing.remove();
+  if (!data) return;
+
+  const script = document.createElement("script");
+  script.type = "application/ld+json";
+  script.id = JSON_LD_ID;
+  script.textContent = JSON.stringify(data);
+  document.head.appendChild(script);
+};
+
+const absoluteImage = (image?: string) => {
+  const src = image ?? DEFAULT_IMAGE;
+  if (/^https?:\/\//i.test(src)) return src;
+  return `${SITE_URL}${src.startsWith("/") ? src : `/${src}`}`;
 };
 
 export const Seo = ({
@@ -49,56 +80,74 @@ export const Seo = ({
   image,
   type = "website",
   publishedAt,
+  noindex = false,
+  jsonLd,
 }: Props) => {
-  const { lang } = useT();
   const location = useLocation();
 
-  // Если canonical не передан — берём путь из URL без языкового префикса
-  const rawPath =
-    (canonical ?? location.pathname.replace(/^\/(ru|ka)/, "")) || "/";
+  // canonical и og:url — всегда чистый путь без query/hash
+  const cleanPath = canonical ?? location.pathname;
+  const currentUrl = `${SITE_URL}${cleanPath === "/" ? "" : cleanPath}`;
+  const fullTitle = `${title} — ${SITE_NAME}`;
+  const absoluteImg = absoluteImage(image);
 
   useEffect(() => {
-    const fullTitle = `${title} — ${SITE_NAME}`;
     document.title = fullTitle;
 
-    if (description) setMeta("name", "description", description);
-    setMeta("property", "og:title", fullTitle);
-    setMeta("property", "og:type", type);
-    setMeta("property", "og:site_name", SITE_NAME);
-    setMeta("property", "og:locale", lang === "ka" ? "ka_GE" : "ru_RU");
-    if (description) setMeta("property", "og:description", description);
-    if (image) setMeta("property", "og:image", `${SITE_URL}${image}`);
+    // Обычные meta
+    if (description) upsertMeta("name", "description", description);
 
-    // Canonical — на текущий язык
-    const currentUrl = `${SITE_URL}/${lang}${rawPath === "/" ? "" : rawPath}`;
-    setMeta("property", "og:url", currentUrl);
-    setLink("canonical", currentUrl);
-
-    // hreflang для всех языков
-    setLink(
-      "alternate",
-      `${SITE_URL}/ru${rawPath === "/" ? "" : rawPath}`,
-      "ru",
-    );
-    setLink(
-      "alternate",
-      `${SITE_URL}/ka${rawPath === "/" ? "" : rawPath}`,
-      "ka",
-    );
-    setLink(
-      "alternate",
-      `${SITE_URL}/ru${rawPath === "/" ? "" : rawPath}`,
-      "x-default",
-    );
-
-    setMeta("name", "twitter:card", "summary_large_image");
-    setMeta("name", "twitter:title", fullTitle);
-    if (description) setMeta("name", "twitter:description", description);
-    if (image) setMeta("name", "twitter:image", `${SITE_URL}${image}`);
-    if (type === "article" && publishedAt) {
-      setMeta("property", "article:published_time", publishedAt);
+    // Robots
+    if (noindex) {
+      upsertMeta("name", "robots", "noindex, follow");
+    } else {
+      removeMeta("name", "robots");
     }
-  }, [title, description, canonical, image, type, publishedAt, lang, rawPath]);
+
+    // Open Graph
+    upsertMeta("property", "og:title", fullTitle);
+    upsertMeta("property", "og:type", type);
+    upsertMeta("property", "og:site_name", SITE_NAME);
+    upsertMeta("property", "og:locale", "ru_RU");
+    upsertMeta("property", "og:url", currentUrl);
+    if (description) upsertMeta("property", "og:description", description);
+    upsertMeta("property", "og:image", absoluteImg);
+
+    // Article-специфичное
+    if (type === "article") {
+      if (publishedAt) {
+        upsertMeta("property", "article:published_time", publishedAt);
+      }
+    } else {
+      removeMeta("property", "article:published_time");
+    }
+
+    // Twitter
+    upsertMeta("name", "twitter:card", "summary_large_image");
+    upsertMeta("name", "twitter:title", fullTitle);
+    if (description) upsertMeta("name", "twitter:description", description);
+    upsertMeta("name", "twitter:image", absoluteImg);
+
+    // Canonical
+    upsertLink("canonical", currentUrl);
+
+    // JSON-LD
+    setJsonLd(jsonLd);
+
+    return () => {
+      // При размонтировании очищаем JSON-LD, чтобы не накапливался
+      setJsonLd(undefined);
+    };
+  }, [
+    fullTitle,
+    description,
+    type,
+    publishedAt,
+    currentUrl,
+    absoluteImg,
+    noindex,
+    jsonLd,
+  ]);
 
   return null;
 };

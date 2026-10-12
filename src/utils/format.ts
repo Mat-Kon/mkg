@@ -1,4 +1,4 @@
-const GEL = "₾";
+const GEL = "₽";
 
 export const formatPrice = (value: number): string => {
   const rounded = Math.round(value);

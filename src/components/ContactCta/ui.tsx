@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useT } from "@/i18n/context";
-import { useLocalizedPath } from "@/i18n/useLocalizedPath";
 import { CONTACTS } from "@/data/contacts";
 import styles from "./index.module.scss";
 
@@ -20,7 +19,6 @@ export const ContactCta = ({
   className,
 }: Props) => {
   const { t } = useT();
-  const lp = useLocalizedPath();
 
   return (
     <div className={`container ${styles.cta} ${className ?? ""}`}>
@@ -28,7 +26,7 @@ export const ContactCta = ({
       <p className={styles.ctaText}>{text ?? t.contactCta.text}</p>
 
       <div className={styles.ctaActions}>
-        <Link to={lp(buttonLink)} className={styles.primaryBtn}>
+        <Link to={buttonLink} className={styles.primaryBtn}>
           {buttonLabel ?? t.contactCta.button}
         </Link>
       </div>

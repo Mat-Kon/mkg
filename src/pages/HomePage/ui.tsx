@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useT } from "@/i18n/context";
-import { useLocalizedPath } from "@/i18n/useLocalizedPath";
 import { CONTACTS } from "@/data/contacts";
 import { WORKS } from "@/data/works";
 import { ImageWithFallback } from "@/components/ImageWithFallback";
@@ -32,8 +31,7 @@ const FEATURE_KEYS = ["control", "experience", "honest", "warranty"] as const;
 const STEP_KEYS = ["request", "measure", "estimate", "work"] as const;
 
 export const HomePage = () => {
-  const { t, lang } = useT();
-  const lp = useLocalizedPath();
+  const { t } = useT();
 
   return (
     <>
@@ -46,7 +44,7 @@ export const HomePage = () => {
             <h1 className={styles.heroTitle}>{t.home.hero.title}</h1>
             <p className={styles.heroText}>{t.home.hero.text}</p>
             <div className={styles.heroActions}>
-              <Link to={lp("/calculator")} className={styles.primaryBtn}>
+              <Link to="/calculator" className={styles.primaryBtn}>
                 {t.home.hero.ctaPrimary}
               </Link>
               <a href={`tel:${CONTACTS.phone}`} className={styles.secondaryBtn}>
@@ -74,7 +72,7 @@ export const HomePage = () => {
             <div className={styles.trustLabel}>{t.home.trust.years}</div>
           </div>
           <div className={styles.trustItem}>
-            <div className={styles.trustValue}>0 ₾</div>
+            <div className={styles.trustValue}>0 ₽</div>
             <div className={styles.trustLabel}>{t.home.trust.freeVisit}</div>
           </div>
           <div className={styles.trustItem}>
@@ -108,7 +106,7 @@ export const HomePage = () => {
             ))}
           </div>
           <div className={styles.sectionCta}>
-            <Link to={lp("/services")} className={styles.textLink}>
+            <Link to="/services" className={styles.textLink}>
               {t.home.services.allServices}
             </Link>
           </div>
@@ -169,25 +167,25 @@ export const HomePage = () => {
             {WORKS.slice(0, 3).map((work) => (
               <Link
                 key={work.slug}
-                to={lp(`/works/${work.slug}`)}
+                to={`/works/${work.slug}`}
                 className={styles.workCard}
               >
                 <ImageWithFallback
                   src={work.cover}
-                  alt={work.title[lang]}
+                  alt={work.title.ru}
                   className={styles.workImage}
                 />
                 <div className={styles.workOverlay} />
                 <div className={styles.workContent}>
-                  <div className={styles.workTitle}>{work.title[lang]}</div>
-                  <div className={styles.workShort}>{work.short[lang]}</div>
+                  <div className={styles.workTitle}>{work.title.ru}</div>
+                  <div className={styles.workShort}>{work.short.ru}</div>
                 </div>
               </Link>
             ))}
           </div>
 
           <div className={styles.sectionCta}>
-            <Link to={lp("/works")} className={styles.textLink}>
+            <Link to="/works" className={styles.textLink}>
               {t.home.works.allWorks}
             </Link>
           </div>
@@ -200,7 +198,7 @@ export const HomePage = () => {
           <h2 className={styles.ctaTitle}>{t.home.finalCta.title}</h2>
           <p className={styles.ctaText}>{t.home.finalCta.text}</p>
           <div className={styles.ctaActions}>
-            <Link to={lp("/calculator")} className={styles.primaryBtn}>
+            <Link to="/calculator" className={styles.primaryBtn}>
               {t.home.finalCta.button}
             </Link>
           </div>

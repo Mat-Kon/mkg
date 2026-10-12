@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 import { useT } from "@/i18n/context";
-import { useLocalizedPath } from "@/i18n/useLocalizedPath";
 import { useBlogIndex } from "@/hooks/useBlog";
 import { ImageWithFallback } from "@/components/ImageWithFallback";
 import styles from "./index.module.scss";
 import { Seo } from "@/components/Seo";
 
-const formatDate = (iso: string, lang: string): string =>
-  new Date(iso).toLocaleDateString(lang === "ka" ? "ka-GE" : "ru-RU", {
+const formatDate = (iso: string): string =>
+  new Date(iso).toLocaleDateString("ru-RU", {
     day: "2-digit",
     month: "long",
     year: "numeric",
@@ -15,7 +14,6 @@ const formatDate = (iso: string, lang: string): string =>
 
 export const BlogPage = () => {
   const { t, lang } = useT();
-  const lp = useLocalizedPath();
   const { data, loading, error } = useBlogIndex(lang);
 
   return (
@@ -35,7 +33,7 @@ export const BlogPage = () => {
           {data?.posts.map((post) => (
             <Link
               key={post.slug}
-              to={lp(`/blog/${post.slug}`)}
+              to={`/blog/${post.slug}`}
               className={styles.card}
             >
               <div className={styles.cardImageWrap}>
@@ -47,7 +45,7 @@ export const BlogPage = () => {
               </div>
               <div className={styles.cardBody}>
                 <div className={styles.cardMeta}>
-                  <span>{formatDate(post.date, lang)}</span>
+                  <span>{formatDate(post.date)}</span>
                   <span>·</span>
                   <span>
                     {post.readingTime} {t.blog.readingTime}

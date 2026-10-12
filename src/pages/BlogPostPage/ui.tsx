@@ -3,11 +3,11 @@ import { useT } from "@/i18n/context";
 import { useLocalizedPath } from "@/i18n/useLocalizedPath";
 import { useBlogPost } from "@/hooks/useBlog";
 import type { BlogBlock } from "@/types/blog";
-import { CONTACTS } from "@/data/contacts";
 import { ImageWithFallback } from "@/components/ImageWithFallback";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import styles from "./index.module.scss";
 import { Seo } from "@/components/Seo";
+import { ContactCta } from "@/components/ContactCta";
 
 const formatDate = (iso: string, lang: string): string =>
   new Date(iso).toLocaleDateString(lang === "ka" ? "ka-GE" : "ru-RU", {
@@ -132,46 +132,7 @@ const BlogPostContent = ({ slug, lang }: ContentProps) => {
         <div className={`container ${styles.content}`}>
           {post.blocks.map(renderBlock)}
         </div>
-
-        <div className={`container ${styles.cta}`}>
-          <h2 className={styles.ctaTitle}>{t.contactCta.title}</h2>
-          <p className={styles.ctaText}>{t.contactCta.text}</p>
-          <div className={styles.ctaActions}>
-            <Link to={lp("/calculator")} className={styles.primaryBtn}>
-              {t.contactCta.button}
-            </Link>
-          </div>
-          <div className={styles.ctaContacts}>
-            <a
-              href={`https://wa.me/${CONTACTS.whatsapp}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${styles.contactBtn} ${styles.whatsapp}`}
-            >
-              {t.contactCta.whatsapp}
-            </a>
-            <a
-              href={`https://t.me/${CONTACTS.telegram}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${styles.contactBtn} ${styles.telegram}`}
-            >
-              {t.contactCta.telegram}
-            </a>
-            <a
-              href={`mailto:${CONTACTS.email}`}
-              className={`${styles.contactBtn} ${styles.email}`}
-            >
-              {t.contactCta.email}
-            </a>
-            <a
-              href={`tel:${CONTACTS.phone}`}
-              className={`${styles.contactBtn} ${styles.phone}`}
-            >
-              {t.contactCta.phone}
-            </a>
-          </div>
-        </div>
+        <ContactCta />
       </article>
     </>
   );

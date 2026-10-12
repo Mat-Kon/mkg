@@ -29,7 +29,7 @@ export const Footer = () => {
       <div className={`container ${styles.inner}`}>
         <div className={styles.col}>
           <div className={styles.brand}>
-            <span>Matveev Master</span>
+            <span>Матвеев Мастер</span>
           </div>
           <p className={styles.muted}>{t.footer.tagline}</p>
         </div>

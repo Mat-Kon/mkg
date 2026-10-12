@@ -92,11 +92,10 @@ export const ContactsPage = () => {
           <div className={styles.right}>
             <div className={styles.map}>
               <iframe
-                src="https://yandex.ru/map-widget/v1/?um=constructor%3Ad5632b6c869d7996c291314fc87d8ce705298b6d3ecde06ea4e07de316fe8f6a&source=constructor"
+                src="https://yandex.ru/map-widget/v1/?um=constructor%3A2dc5f62e34bee0b09b283f5bc7e0675a8cd0382664b5f6e00075cee0fda4e85e&amp;source=constructor"
                 width="100%"
                 height="100%"
                 frameBorder="0"
-                title={t.contacts.mapTitle}
                 loading="lazy"
                 allowFullScreen
               />

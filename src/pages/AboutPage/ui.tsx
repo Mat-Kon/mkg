@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useT } from "@/i18n/context";
-import { useLocalizedPath } from "@/i18n/useLocalizedPath";
 import { CONTACTS } from "@/data/contacts";
 import { ContactCta } from "@/components/ContactCta";
 import styles from "./index.module.scss";
@@ -24,7 +23,6 @@ const SKILL_KEYS = [
 
 export const AboutPage = () => {
   const { t } = useT();
-  const lp = useLocalizedPath();
 
   return (
     <>
@@ -38,7 +36,7 @@ export const AboutPage = () => {
               <h1 className={styles.title}>{t.about.name}</h1>
               <p className={styles.lead}>{t.about.lead}</p>
               <div className={styles.heroActions}>
-                <Link to={lp("/calculator")} className={styles.primaryBtn}>
+                <Link to="/calculator" className={styles.primaryBtn}>
                   {t.contactCta.button}
                 </Link>
                 <a

@@ -2,13 +2,160 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
+
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Матвеев Мастер — ремонт, обслуживание и остекление окон и балконов. Расчёт стоимости онлайн, выезд мастера бесплатно." />
-    <title>Матвеев Мастер — ремонт и обслуживание окон и балконов</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="mask-icon" href="/favicon.svg" color="#1a1a1a" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <!-- Viewport -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#1a1a1a" />
+
+    <!-- Базовая SEO. Seo.tsx перезапишет на внутренних страницах -->
+    <title>
+      Матвеев Мастер — ремонт и обслуживание окон и балконов в Ростове-на-Дону
+    </title>
+    <meta
+      name="description"
+      content="Частный мастер по окнам и балконам в Ростове-на-Дону. Ремонт, регулировка, остекление, отделка, электрика. Опыт с 2014 года, гарантия на работы, бесплатный замер."
+    />
+    <meta
+      name="keywords"
+      content="ремонт балконов Ростов-на-Дону, остекление балконов, ремонт окон ПВХ, регулировка окон, отделка балконов, мастер по балконам"
+    />
+    <meta name="author" content="Матвеев Константин" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <link rel="canonical" href="https://mkbalkon.ru/" />
+
+    <!-- Open Graph (базовое, переопределяется Seo.tsx) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Матвеев Мастер" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta
+      property="og:title"
+      content="Матвеев Мастер — ремонт и обслуживание окон и балконов"
+    />
+    <meta
+      property="og:description"
+      content="Частный мастер по окнам и балконам в Ростове-на-Дону. Ремонт, остекление, отделка, электрика. Опыт с 2014 года, гарантия на работы."
+    />
+    <meta property="og:url" content="https://mkbalkon.ru/" />
+    <meta
+      property="og:image"
+      content="https://mkbalkon.ru/images/og-default.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Матвеев Мастер — окна и балконы под ключ"
+    />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Матвеев Мастер — ремонт и обслуживание окон и балконов"
+    />
+    <meta
+      name="twitter:description"
+      content="Частный мастер по окнам и балконам в Ростове-на-Дону. Опыт с 2014 года."
+    />
+    <meta
+      name="twitter:image"
+      content="https://mkbalkon.ru/images/og-default.jpg"
+    />
+
+    <!-- Schema.org: LocalBusiness (базовая, для главной; на других страницах Seo.tsx добавит своё) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Матвеев Мастер",
+        "description": "Частный мастер по ремонту, обслуживанию и остеклению окон и балконов в Ростове-на-Дону.",
+        "url": "https://mkbalkon.ru/",
+        "telephone": "+79001306069",
+        "email": "mk_balkon@mail.ru",
+        "image": "https://mkbalkon.ru/images/og-default.jpg",
+        "priceRange": "₽₽",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ростов-на-Дону",
+          "addressCountry": "RU"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Ростов-на-Дону"
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "10:00",
+          "closes": "19:00"
+        },
+        "founder": {
+          "@type": "Person",
+          "name": "Константин Матвеев"
+        },
+        "foundingDate": "2014"
+      }
+    </script>
+
+    <!-- Preconnect для внешних ресурсов (если будут) -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" /> -->
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
+
+    <!-- Верификация в поисковых панелях. Раскомментируйте и вставьте свои коды -->
+    <!-- <meta name="yandex-verification" content="ВАШ_КОД_ЯНДЕКСА" /> -->
+    <!-- <meta name="google-site-verification" content="ВАШ_КОД_GOOGLE" /> -->
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <div
+        style="
+          max-width: 640px;
+          margin: 40px auto;
+          padding: 0 20px;
+          font-family: system-ui, sans-serif;
+          line-height: 1.6;
+          color: #1a1a1a;
+        "
+      >
+        <h1>
+          Матвеев Мастер — ремонт и обслуживание окон и балконов в
+          Ростове-на-Дону
+        </h1>
+        <p>
+          Для работы сайта нужен JavaScript. Включите его или свяжитесь со мной
+          напрямую:
+        </p>
+        <p>
+          Телефон: <a href="tel:+79001306069">+7 (900) 130-60-69</a><br />
+          WhatsApp: <a href="https://wa.me/79001306069">написать</a><br />
+          Telegram: <a href="https://t.me/Tolskon">написать</a><br />
+          Email: <a href="mailto:mk_balkon@mail.ru">mk_balkon@mail.ru</a>
+        </p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
